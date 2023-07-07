@@ -1,0 +1,31 @@
+@import '../../styles/variaveis';
+
+.banner {
+    background-image: url('../../assets/bannerHome.png');
+    background-size: cover;
+    height: 100vh;
+
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+
+    &__texto {
+        font-family: $fonte-logo;
+        font-size: 47px;
+        line-height: 56px;
+        color: white;
+        text-align: center;
+        letter-spacing: 4px;
+        padding: 0 1em;
+
+        position: absolute;
+        top: 30vh;
+
+
+        h2 strong{
+            color: $azul;
+            text-shadow: 1px 1px 1px rgb(161, 161, 161);
+        }
+    }
+}

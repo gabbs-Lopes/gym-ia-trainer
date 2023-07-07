@@ -1,0 +1,37 @@
+@import '../../styles/variaveis';
+
+.divInput {
+    width: 80vw;
+    color: white;
+    font-family: $fonte-logo;
+
+    display: flex;
+    flex-direction: column;
+
+    margin-bottom: 20px;
+
+    label {
+        margin-bottom: 2px;
+        letter-spacing: 1px;
+    }
+
+    input {
+        color: white;
+        background: none;
+        border: none;
+        border-bottom: 1px solid rgb(133, 133, 133);
+        letter-spacing: 1px;
+        font-family: $fonte-principal;
+        font-size: 14px;
+
+        padding: 1.3em;
+    }
+
+    input::placeholder {
+        font-family: $fonte-principal;
+    }
+
+    input:active {
+        border: none;
+    }
+}
