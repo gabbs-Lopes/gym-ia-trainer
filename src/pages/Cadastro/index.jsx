@@ -6,19 +6,52 @@ import BotaoSubmit from 'componentes/BotaoSubmit'
 import LinkForm from 'componentes/LinkForm'
 import halter from 'assets/iconeHalter2.png'
 
+import axios from 'axios'
+
+
 export default function Cadastro() {
 
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
   const [confirmSenha, setConfirmSenha] = useState('')
 
-  const aoSalvar = (evento) => {
-    evento.preventDefault()
-    console.log(email, senha, confirmSenha)
+  const [dados, setDados] = useState({
+    email: '',
+    senha: ''
+  })
+
+  /* const valueInput = e => setData({ ...data, email: email, senha: senha,}) */
+
+  const validaForm = (e) => {
+    e.preventDefault()  
+
+    if(senha === confirmSenha) {
+      setDados({ ...dados, email: email, senha: senha,})
+      aoSalvar()
+    } else {
+      console.log("as senhas nao são iguais")
+    }
 
     setEmail('')
     setSenha('')
     setConfirmSenha('')
+  }
+
+  const aoSalvar = async () => {
+    console.log(email, senha)
+
+    const headers = {
+      'headers': {
+        'content-Type': 'application/json'
+      }
+    }
+
+    await axios.post('http://localhost:3001/cadastro', dados, headers)
+    .then((response) => {
+      console.log(response.data.mensagem)
+    }).catch((err) => {
+      console.log(err.response.data.mensagem)
+    })
   }
 
   return (
@@ -34,7 +67,7 @@ export default function Cadastro() {
         </div>
 
         <div className={styles.cadastro__form}>
-          <form action="" onSubmit={aoSalvar}>
+          <form action="" onSubmit={validaForm}>
             <Input 
               label="E-mail" 
               type="text" 
