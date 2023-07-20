@@ -3,14 +3,14 @@ import styles from './Menu.module.scss'
 
 import Button from 'componentes/Button'
 
-import logo from 'assets/logo.png'
 import Menu from 'componentes/Menu'
+import Logo from 'componentes/Logo'
 
 export default function NavInicio() {
 
   return (
     <nav className={styles.menu}>
-      <img src={logo} className={styles.menu__logo} alt='logo Gym IA Trainer' />
+      <Logo />
 
       <Button texto='Entrar' to='/login' />
       <Menu />

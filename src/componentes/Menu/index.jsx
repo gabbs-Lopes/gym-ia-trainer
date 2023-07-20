@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import MenuHamburguer from './MenuHamburguer'
 import MenuLateral from 'componentes/MenuLateral'
+import AbrirMenu from './AbrirMenu'
 
-export default function Menu() {
+export default function Menu({ config }) {
 
     const [menu, setMenu] = useState(false)
 
@@ -12,7 +12,7 @@ export default function Menu() {
 
     return (
         <div>
-            <MenuHamburguer mudaEstadoMenu={mudaEstadoMenu} />
+            <AbrirMenu config={config} mudaEstadoMenu={mudaEstadoMenu} />
             <MenuLateral mudaEstadoMenu={mudaEstadoMenu} estado={menu} />
         </div>
     )

@@ -1,0 +1,19 @@
+@import '../../styles/variaveis';
+
+.navBar {
+    background-color: $branco;
+    width: 100vw;
+    height: 10vh;
+
+    padding: 0 1em;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__fotoPerfil {
+        width: 50px;
+        height: 50px;
+        border-radius: 100%;
+    }
+}

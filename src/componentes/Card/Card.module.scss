@@ -1,0 +1,43 @@
+@import '../../styles/variaveis';
+
+.card {
+    width: 300px;
+
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-top: 2vh;
+
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.61);
+
+    &__img {
+        width: 100%;
+
+        border-top-right-radius: 21px;
+        border-top-left-radius: 21px;
+    }
+
+    &__info {
+        width: 100%;
+        min-height: 40px;
+
+        border-bottom-right-radius: 21px;
+        border-bottom-left-radius: 21px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    h3 {
+        font-weight: 800;
+        letter-spacing: 1px;
+        margin: .5em 1em;
+
+        text-align: center;
+    }
+}
