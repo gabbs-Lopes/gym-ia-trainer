@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import styles from './Cadastro.module.scss'
-import MenuHamburguer from 'componentes/Menu/MenuHamburguer'
 import Input from 'componentes/Input'
 import BotaoSubmit from 'componentes/BotaoSubmit'
 import LinkForm from 'componentes/LinkForm'
 import halter from 'assets/iconeHalter2.png'
 
 import axios from 'axios'
+import Menu from 'componentes/Menu'
 
 
 export default function Cadastro() {
@@ -57,7 +57,7 @@ export default function Cadastro() {
   return (
     <section className={styles.cadastro}>
       <header className={styles.cadastro__menu}>
-        <MenuHamburguer/>
+        <Menu />
       </header>
 
       <main>
@@ -68,6 +68,13 @@ export default function Cadastro() {
 
         <div className={styles.cadastro__form}>
           <form action="" onSubmit={validaForm}>
+          <Input 
+              label="Nome" 
+              type="text" 
+              conexao="nome" 
+              placeholder="Digite seu nome"
+            />
+
             <Input 
               label="E-mail" 
               type="text" 

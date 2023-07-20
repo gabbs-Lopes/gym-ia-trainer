@@ -1,22 +1,19 @@
-import MenuHamburguer from 'componentes/Menu/MenuHamburguer'
 import React from 'react'
 import styles from './Login.module.scss'
-import muck from 'assets/iconeMuck2.png'
+
 import Input from 'componentes/Input'
 import BotaoSubmit from 'componentes/BotaoSubmit'
 import LinkForm from 'componentes/LinkForm'
+import Menu from 'componentes/Menu'
+
+import muck from 'assets/iconeMuck2.png'
 
 export default function Login() {
-
-  function abrirMenu() {
-
-    console.log("oi")
-  }
 
   return (
     <section className={styles.login}>
       <header className={styles.login__menu}>
-        <MenuHamburguer abrirMenu={abrirMenu}/>
+        <Menu />
       </header>
 
       <main>

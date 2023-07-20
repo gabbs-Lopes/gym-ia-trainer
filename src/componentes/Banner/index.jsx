@@ -1,13 +1,13 @@
 import React from 'react'
 import styles from './Banner.module.scss'
-import Menu from 'componentes/Menu'
+import NavInicio from 'componentes/NavInicio'
 
 export default function index() {
   return (
     <header className={styles.banner}>
-      <Menu />
+      <NavInicio />
       <div className={styles.banner__texto}>
-        <h2><strong>Tenologia</strong> e <strong>evolução</strong> num só lugar</h2>
+        <h2><strong>Tecnologia</strong> e <strong>evolução</strong> num só lugar</h2>
       </div> 
     </header>
   )
