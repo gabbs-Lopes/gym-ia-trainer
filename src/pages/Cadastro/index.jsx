@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+ import React, { useState } from 'react'
 import styles from './Cadastro.module.scss'
 import Input from 'componentes/Input'
 import BotaoSubmit from 'componentes/BotaoSubmit'
@@ -15,18 +15,14 @@ export default function Cadastro() {
   const [senha, setSenha] = useState('')
   const [confirmSenha, setConfirmSenha] = useState('')
 
-  const [dados, setDados] = useState({
-    email: '',
-    senha: ''
-  })
-
-  /* const valueInput = e => setData({ ...data, email: email, senha: senha,}) */
+  /* const valueInput = e => setDados({ ...dados, email: email, senha: senha,}) */
 
   const validaForm = (e) => {
     e.preventDefault()  
 
+    console.log(email, senha)
+
     if(senha === confirmSenha) {
-      setDados({ ...dados, email: email, senha: senha,})
       aoSalvar()
     } else {
       console.log("as senhas nao são iguais")
@@ -42,15 +38,18 @@ export default function Cadastro() {
 
     const headers = {
       'headers': {
-        'content-Type': 'application/json'
+        'content-Type': 'application/json; charset=utf-8'
       }
     }
 
-    await axios.post('http://localhost:3001/cadastro', dados, headers)
+    await axios.post('http://localhost:3001/api/usuario_unit', {
+      email: email,
+      senha: senha
+    }, headers)
     .then((response) => {
-      console.log(response.data.mensagem)
+      console.log(response)
     }).catch((err) => {
-      console.log(err.response.data.mensagem)
+      console.log(err.response)
     })
   }
 
@@ -68,12 +67,12 @@ export default function Cadastro() {
 
         <div className={styles.cadastro__form}>
           <form action="" onSubmit={validaForm}>
-          <Input 
+          {/* <Input 
               label="Nome" 
               type="text" 
               conexao="nome" 
               placeholder="Digite seu nome"
-            />
+            /> */}
 
             <Input 
               label="E-mail" 

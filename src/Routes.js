@@ -4,6 +4,7 @@ import Login from 'pages/Login';
 import Cadastro from 'pages/Cadastro';
 import NotFound from 'pages/NotFound';
 import ExerciciosPage from 'pages/ExerciciosPage';
+import Perfil from 'pages/Perfil';
 
 function AppRoutes() {
   
@@ -14,6 +15,7 @@ function AppRoutes() {
         <Route path="/login" element={ <Login /> }/>
         <Route path="/cadastro" element={ <Cadastro /> }/>
         <Route path="/exercicios" element={ <ExerciciosPage /> }/>
+        <Route path="/perfil" element={ <Perfil /> }/>
 
         <Route path='*' element={ <NotFound />} />
       </Routes>
