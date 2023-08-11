@@ -3,19 +3,31 @@ import styles from './NavLogado.module.scss'
 import Menu from 'componentes/Menu'
 import imgPerfilTeste from 'assets/fotosPerfil/hiroHamada.jpg'
 import Logo from 'componentes/Logo'
+import { Link } from 'react-router-dom'
 
-export default function NavBarLogado() {
+export default function NavBarLogado({ perfil, shadow }) {
+
   return (
-    <nav className={styles.navBar}>
-      <img 
-        className={styles.navBar__fotoPerfil} 
-        src={imgPerfilTeste} 
-        alt="imagem do hiro hamada" 
-      />
+    <nav className={`
+        ${styles.navBar}
+        ${shadow ? styles.shadow : ''}
+      `}>
 
-      <Logo preto/>
+      {perfil
+        ? ''
+        : <Link to="/perfil">
+            <img
+              className={styles.navBar__fotoPerfil}
+              src={imgPerfilTeste}
+              alt="imagem do hiro hamada"
+            />
+          </Link>
+      }
 
-      <Menu config/>
+
+      <Logo shadow={shadow} />
+
+      <Menu config />
     </nav>
   )
 }

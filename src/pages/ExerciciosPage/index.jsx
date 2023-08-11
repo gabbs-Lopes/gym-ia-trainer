@@ -7,7 +7,7 @@ export default function ExerciciosPage() {
   return (
     <>
       <header className={styles.header}>
-        <NavBarLogado />
+        <NavBarLogado perfil shadow/>
       </header>
 
       <main className={styles.main}>

@@ -13,7 +13,7 @@ export default function AbrirMenu({ mudaEstadoMenu, config }) {
     <div onClick={ mudaEstadoMenu }>
       {config
         ? <img src={iconeConfig} alt="icone de engrenagem" />
-        : <Hamburguer 
+        : <Hamburguer
             className={styles.menuHamburguer}
           />
       }

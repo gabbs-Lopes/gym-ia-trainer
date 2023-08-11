@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './Login.module.scss'
 
 import Input from 'componentes/Input'
@@ -9,6 +9,10 @@ import Menu from 'componentes/Menu'
 import muck from 'assets/iconeMuck2.png'
 
 export default function Login() {
+
+  // Para Fidel Castro Mendes
+  const [emailLogin, setEmailLogin] = useState('')
+  const [senhaLogin, setSenhaLogin] = useState('')
 
   return (
     <section className={styles.login}>

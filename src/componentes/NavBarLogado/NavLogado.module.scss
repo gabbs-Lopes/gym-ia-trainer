@@ -1,7 +1,7 @@
 @import '../../styles/variaveis';
 
 .navBar {
-    background-color: $branco;
+    /* background-color: $branco; */
     width: 100vw;
     height: 10vh;
 
@@ -16,4 +16,8 @@
         height: 50px;
         border-radius: 100%;
     }
+}
+
+.shadow {
+    background-color: $cinza-escuro;
 }
