@@ -46,7 +46,7 @@ export default function Card() {
                     className={styles.card__info} 
                     style={{backgroundColor: "rgb(43, 145, 73)"}}>
                     <h3>Crucifixo Inclinado com Halteres</h3>
-                    {/* <p>Peito</p> */}
+                    <p>Peito</p>
                 </div>
             </div>
 

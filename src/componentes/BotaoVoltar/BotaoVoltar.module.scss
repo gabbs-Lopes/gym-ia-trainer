@@ -1,0 +1,20 @@
+@import '../../styles/variaveis';
+
+button {
+        background-color: rgb(221, 221, 221);
+        border: none;
+    }
+
+a {
+    font-weight: 600;
+    background: black;
+    color: $azul-escuro;
+}
+
+.voltar {
+    background-color: rgba(0, 0, 0, 0.144);
+    width: 30px;
+    padding: 5px;
+    border-radius: 100%;
+
+}

@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './Rodape.module.scss'
 
 import iconeInsta from 'assets/icones/instagram.png'
+import LinkDefault from 'componentes/LinkDefault'
 
 export default function Rodape() {
     return (
@@ -45,15 +46,15 @@ export default function Rodape() {
             <section className={styles.navFooter}>
                 <h2>Links</h2>
                 <div>
-                    <h3>Sobre Nós</h3>
-                    <h3>Serviços</h3>
-                    <h3>Experimente</h3>
-                    <h3>Apoie o projeto</h3>
-                    <h3>Trabalhe conosco</h3>
+                    <LinkDefault texto="Sobre Nós" to="/?"/>
+                    <LinkDefault texto="Serviços" to="/?"/>
+                    <LinkDefault texto="Experimente" to="/?"/>
+                    <LinkDefault texto="Trabalhe conosco" to="/?"/>
+                    <LinkDefault texto="Política de Privacidade" to="/politicaDePrivacidade"/>
                 </div>
             </section>
 
-            <hr className={styles.linha}/>
+            <hr className={styles.linha} />
 
             <section className={styles.direitos}>
                 <p>Todos os direitos reservados GYM IA TRAINER &reg; - 2023</p>

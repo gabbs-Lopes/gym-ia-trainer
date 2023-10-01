@@ -1,9 +1,11 @@
 import React from 'react'
-import styles from './LinkForm.module.scss'
 import { NavLink } from 'react-router-dom'
+import styles from './BotaoVoltar.module.scss'
+import seta from './seta-esquerda.png'
 
-export default function LinkForm({ children, to }) {
-    return (
+export default function BotaoVoltar({texto, to}) {
+  return (
+    <button>
         <NavLink
             className={({ isActive }) => `
                 ${styles.link}
@@ -12,7 +14,8 @@ export default function LinkForm({ children, to }) {
             to={to}
             end
         >
-            {children}
+            <img className={styles.voltar} src={seta} alt="seta para esquerda" />
         </NavLink>
-    )
+    </button>
+  )
 }

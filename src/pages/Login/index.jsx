@@ -3,7 +3,7 @@ import styles from './Login.module.scss'
 
 import Input from 'componentes/Input'
 import BotaoSubmit from 'componentes/BotaoSubmit'
-import LinkForm from 'componentes/LinkForm'
+import LinkDefault from 'componentes/LinkDefault'
 import Menu from 'componentes/Menu'
 
 import muck from 'assets/iconeMuck2.png'
@@ -37,7 +37,7 @@ export default function Login() {
 
         <div className={styles.login__toCadastro}>
           <h3>Don't have an account?</h3>
-          <LinkForm estilo="oi" children="Sign up &gt;" to="/cadastro"/>
+          <LinkDefault azul texto="Sign up &gt;" to="/cadastro"/>
         </div>
       </main>
     </section>

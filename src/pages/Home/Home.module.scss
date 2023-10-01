@@ -1,5 +1,69 @@
-.valores {
-    background-color: rgb(160, 160, 160);
-    width: 100%;
-    height: 100vh;
+@import '../../styles/variaveis';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.porqueNosEscolher {
+    background-color: $branco;
+    width: 100vw;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 6vh 0;
+
+    &__div {
+        background-color: $azul-principal;
+        width: 75%;
+        img {
+            width: 100%;
+            position: relative;
+            top: -10px;
+            left: 12px;
+        }
+    }
+
+    &__titulo {
+        width: 80%;
+        color: $azul-principal;
+
+        font-size: 40px;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        line-height: 48px;
+        font-family: $fonte-logo;
+
+        margin: 5vh 0 3vh 0;
+    }
+
+    &__subtitulo {
+        font-family: $fonte-subtitulo;
+        font-size: 20px;
+        font-weight: 600;
+        font-style: italic;
+        color: $cinza-texto;
+        letter-spacing: 1px;
+    }
+
+    &__texto {
+        width: 85%;
+
+        font-size: 18px;
+        font-family: $fonte-subtitulo;
+        font-weight: 500;
+        text-align: center;
+        line-height: 24px;
+        letter-spacing: 2px;
+
+        margin: 2vh 0 0 0;
+    }
+}
+
+main {
+    background-color: $branco;
 }

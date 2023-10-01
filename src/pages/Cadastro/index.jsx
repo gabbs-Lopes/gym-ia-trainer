@@ -2,7 +2,7 @@
 import styles from './Cadastro.module.scss'
 import Input from 'componentes/Input'
 import BotaoSubmit from 'componentes/BotaoSubmit'
-import LinkForm from 'componentes/LinkForm'
+import LinkDefault from 'componentes/LinkDefault'
 import halter from 'assets/iconeHalter2.png'
 
 import axios from 'axios'
@@ -107,7 +107,7 @@ export default function Cadastro() {
 
         <div className={styles.cadastro__toCadastro}>
           <h3>Do you have an account?</h3>
-          <LinkForm estilo="oi" children="&lt; Sign in" to="/login"/>
+          <LinkDefault azul texto="&lt; Sign in" to="/login"/>
         </div>
       </main>
     </section>

@@ -1,0 +1,52 @@
+@import '../../styles/variaveis';
+
+
+body {
+    background-color: rgb(221, 221, 221);
+}
+
+.carrousel {
+    width: 100%;
+
+    margin: 40px 0 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    img {
+        width: 320px;
+        /* border-bottom-right-radius: 20px;
+        border-bottom-left-radius: 20px; */
+        border-radius: 20px;
+    }
+}
+
+.voltar {
+    position: absolute;
+    top: calc(9vh + 15px);
+    left: 10px;
+
+}
+
+.tensorFlow {
+    position: fixed;
+    right: 20px;
+    bottom: 30px;
+}
+
+.info {
+    margin: 0 5vw;
+    
+    &__nome {
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    &__passos {
+        p {
+            margin: 1.5em 0;
+        }
+    }
+}

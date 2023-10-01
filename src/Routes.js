@@ -6,6 +6,7 @@ import NotFound from 'pages/NotFound';
 import ExerciciosPage from 'pages/ExerciciosPage';
 import Perfil from 'pages/Perfil';
 import ExercicioPage from 'pages/ExercicioPage';
+import PoliticaDePrivacidade from 'pages/PoliticaDePrivacidade';
 
 function AppRoutes() {
   
@@ -18,6 +19,7 @@ function AppRoutes() {
         <Route path="/exercicios" element={ <ExerciciosPage /> }/>
         <Route path="/perfil" element={ <Perfil /> }/>
         <Route path='/exercicio' element={<ExercicioPage />}/>
+        <Route path='/politicaDePrivacidade' element={<PoliticaDePrivacidade />}/>
 
         <Route path='*' element={ <NotFound />} />
       </Routes>

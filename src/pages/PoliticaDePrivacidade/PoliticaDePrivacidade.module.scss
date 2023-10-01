@@ -1,0 +1,11 @@
+@import '../../styles/variaveis';
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    &__titulo {
+        font-size: 24px;
+    }
+}

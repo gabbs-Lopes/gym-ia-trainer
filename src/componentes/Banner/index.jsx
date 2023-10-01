@@ -8,7 +8,7 @@ export default function index() {
       <NavBar button />
       <div className={styles.banner__texto}>
         <h2><strong>Tecnologia</strong> e <strong>evolução</strong> num só lugar</h2>
-      </div> 
+      </div>
     </header>
   )
 }

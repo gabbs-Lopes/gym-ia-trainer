@@ -1,9 +1,16 @@
 
+body {
+    /* background: linear-gradient(35deg, #0FB6F6 -70%, white); */
+    width: 100vw;
+    height: 100vh;
+}
 
 .notFound {
     width: 100%;
 
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
 
     &__img {

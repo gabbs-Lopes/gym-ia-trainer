@@ -2,12 +2,13 @@ import React from 'react'
 import styles from './ExerciciosPage.module.scss'
 import NavBarLogado from 'componentes/NavBarLogado'
 import Card from 'componentes/Card'
+import { NavLink } from 'react-router-dom'
 
 export default function ExerciciosPage() {
   return (
     <>
       <header className={styles.header}>
-        <NavBarLogado perfil shadow/>
+        <NavBarLogado perfil shadow />
       </header>
 
       <main className={styles.main}>
@@ -19,7 +20,16 @@ export default function ExerciciosPage() {
         </section>
 
         <section className={styles.cards}>
-          <Card />
+          <NavLink
+            className={({ isActive }) => `
+                ${styles.link}
+                ${isActive ? styles.linkDestacado : ""}
+            `}
+            to="/exercicio"
+            end
+          >            
+            <Card to="/exercicio" />
+          </NavLink>
         </section>
       </main>
     </>
