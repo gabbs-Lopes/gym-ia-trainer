@@ -36,5 +36,16 @@
     left: 10%;
 }
 
+.btnBanner {
+    background: none;
+    font-family: $fonte-subtitulo;
+    font-style: normal;
+    font-size: 18px;
+    letter-spacing: 2px;
+    border-radius: 0;
+    border: 2px solid $branco;
+    padding: .7em 2em;
+}
+
 
 

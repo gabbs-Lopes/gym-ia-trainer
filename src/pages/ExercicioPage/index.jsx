@@ -3,66 +3,74 @@ import styles from './ExercicioPage.module.scss'
 /* import TensorFlow from 'componentes/TensorFlow' */
 
 import BotaoVoltar from 'componentes/BotaoVoltar'
-import supRetoImg from 'assets/bannerHome.png'
 import BotaoTF from 'componentes/BotaoTF'
 import NavBarLogado from 'componentes/NavBarLogado'
 import Carroussel from 'componentes/Carroussel'
+
+import pontoPreto from 'assets/icones/circulo-preto.png'
 
 export default function ExercicioPage() {
   return (
     <>
       <header>
-        <NavBarLogado perfil shadow/>
+        <NavBarLogado perfil shadow />
       </header>
 
       <main>
         <section className={styles.carrousel}>
-          <Carroussel 
-            img1={supRetoImg} 
-            img2={supRetoImg}
-            img3={supRetoImg}
-            img4={supRetoImg}
-          />
-
+          <Carroussel />
         </section>
 
+        {/* botao de voltar */}
         <div className={styles.voltar}>
           <BotaoVoltar texto="<- voltar" to='/exercicios' />
         </div>
 
+        <section className={styles.info}>
+          <h2 className={styles.info__nome}>SUPINO RETO COM BARRA</h2>
+
+          <div className={styles.info__divTitulo}>
+            <h3 className={styles.info__titulo}>Instruções</h3>
+          </div>
+
+          <div className={styles.info__passos}>
+            <table>
+              <tr>
+                <td><img src={pontoPreto} alt="ponto preto" /></td>
+                <td><p>Afaste os pés.</p></td>
+              </tr>
+
+              <tr>
+                <td><img src={pontoPreto} alt="ponto preto" /></td>
+                <td><p>Alinhe-os com o quadril.</p></td>
+              </tr>
+
+              <tr>
+                <td><img src={pontoPreto} alt="ponto preto" /></td>
+                <td><p>Dobre os joelhos, empinando o bumbum</p></td>
+              </tr>
+
+              <tr>
+                <td><img src={pontoPreto} alt="ponto preto" /></td>
+                <td><p>AMantenha a coluna ereta.</p></td>
+              </tr>
+
+              <tr>
+                <td><img src={pontoPreto} alt="ponto preto" /></td>
+                <td><p>Faça o movimento de descida e subida mantendo a postura.</p></td>
+              </tr>
+            </table>
+          </div>
+
+        </section>
+        
+          {/* <TensorFlow /> */}
         <section className={styles.tensorFlow}>
           <BotaoTF />
         </section>
 
       </main>
 
-      <div className={styles.info}>
-        <h2 className={styles.info__nome}>SUPINO RETO COM BARRA</h2>
-
-        <div className={styles.info__divTitulo}>
-          <h3 className={styles.info__titulo}>Instruções</h3>
-        </div>
-
-        <div className={styles.info__passos}>
-          <p>1. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            Pariatur, doloribus!</p>
-          <p>2. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            Pariatur, doloribus!</p>
-          <p>3. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            Pariatur, doloribus!</p>
-          <p>4. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            Pariatur, doloribus!</p>
-          <p>5. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            Pariatur, doloribus!</p>
-          <p>6. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            Pariatur, doloribus!</p>
-          <p>7. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            Pariatur, doloribus!</p>
-        </div>
-
-        {/* <TensorFlow /> */}
-      </div>
     </>
-
   )
 }

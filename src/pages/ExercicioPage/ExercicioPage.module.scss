@@ -7,7 +7,7 @@ body {
 .carrousel {
     width: 100%;
 
-    margin: 40px 0 20px;
+    margin: 0px 0 20px;
 
     display: flex;
     justify-content: center;
@@ -15,19 +15,19 @@ body {
 
 
     img {
-        width: 320px;
-        /* border-bottom-right-radius: 20px;
-        border-bottom-left-radius: 20px; */
-        border-radius: 20px;
+        width: 100%;
+        border-bottom-right-radius: 20px;
+        border-bottom-left-radius: 20px;
     }
 }
 
 .voltar {
     background: none;
     position: absolute;
-    top: calc(9vh + 15px);
+    top: calc(9vh + 12px);
     left: 10px;
 
+    z-index: 1;
 }
 
 .tensorFlow {
@@ -56,12 +56,30 @@ body {
         border-bottom: 2px solid $ciano;
         padding: 0 .2em;
 
-        margin: 2vh 0 0 0;
+        margin: 3vh 0 0 0;
     }
 
     &__passos {
+
+        table {
+            margin: 4vh 0;
+        }
+
+        tr {
+            display: flex;
+            align-items: center;
+        }
+
+        img {
+            width: 5px;
+            margin: 3px 10px;     
+        }
+
         p {
-            margin: 1.5em 0;
+            font-family: $fonte-principal;
+            font-weight: 400;
+            font-size: 16px;
+            margin: .5em 0;
         }
     }
 }

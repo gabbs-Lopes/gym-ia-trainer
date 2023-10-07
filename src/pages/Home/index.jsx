@@ -6,6 +6,7 @@ import Rodape from 'componentes/Rodape'
 
 import imgPNE from 'assets/jovemDesportista.png'
 import Button from 'componentes/Button'
+import Carroussel from 'componentes/Carroussel'
 
 
 export default function Home() {
@@ -43,6 +44,9 @@ export default function Home() {
         <section className={styles.destaques}>
           <h1 className={styles.destaques__titulo}>Destaques</h1>
           <h2 className={styles.destaques__subtitulo}>Nós oferecemos suporte em diversos treinos</h2>
+          <div className={styles.destaques__carrousel}>
+            <Carroussel homePage/>
+          </div>
         </section>
       </main>
 
