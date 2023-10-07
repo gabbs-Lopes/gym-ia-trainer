@@ -5,6 +5,7 @@ import styles from './Home.module.scss'
 import Rodape from 'componentes/Rodape'
 
 import imgPNE from 'assets/jovemDesportista.png'
+import Button from 'componentes/Button'
 
 
 export default function Home() {
@@ -33,6 +34,15 @@ export default function Home() {
             fornecer orientação especializada, motivação inabalável e correções 
             precisas para aprimorar sua técnica. A GymIA Trainer oferece exatamente 
             isso e muito mais.</p>
+
+          <div className={styles.botao}>
+            <Button saibaMais texto="Saiba Mais" to="/sobreNos" />
+          </div>
+        </section>
+
+        <section className={styles.destaques}>
+          <h1 className={styles.destaques__titulo}>Destaques</h1>
+          <h2 className={styles.destaques__subtitulo}>Nós oferecemos suporte em diversos treinos</h2>
         </section>
       </main>
 

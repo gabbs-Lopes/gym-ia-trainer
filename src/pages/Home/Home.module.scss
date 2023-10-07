@@ -14,7 +14,7 @@
     flex-direction: column;
     align-items: center;
 
-    padding: 6vh 0;
+    padding: 6vh 0 0 0;
 
     &__div {
         background-color: $azul-principal;
@@ -64,6 +64,39 @@
     }
 }
 
-main {
-    background-color: $branco;
+.botao {
+    margin-top: 2vh;
+}
+
+.destaques {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin: 0 0 5vh 0;
+
+    &__titulo {
+        color: $ciano;
+
+        font-family: $fonte-subtitulo;
+        font-weight: 500;
+        font-size: 24px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+
+        border-bottom: 1px solid rgb(160, 160, 160);
+        border-top: 1px solid rgb(160, 160, 160);
+
+        padding: .2em .3em;
+
+        margin: 4vh 0;
+    }
+
+    &__subtitulo {
+        width: 80%;
+        font-family: $fonte-logo;
+        font-size: 26px;
+        text-align: center;
+    }
 }

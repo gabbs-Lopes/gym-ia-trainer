@@ -3,9 +3,10 @@ import styles from './ExercicioPage.module.scss'
 /* import TensorFlow from 'componentes/TensorFlow' */
 
 import BotaoVoltar from 'componentes/BotaoVoltar'
-import supRetoImg from './supinoRetoBarra1.jpg'
+import supRetoImg from 'assets/bannerHome.png'
 import BotaoTF from 'componentes/BotaoTF'
 import NavBarLogado from 'componentes/NavBarLogado'
+import Carroussel from 'componentes/Carroussel'
 
 export default function ExercicioPage() {
   return (
@@ -16,10 +17,11 @@ export default function ExercicioPage() {
 
       <main>
         <section className={styles.carrousel}>
-          <img
-            className={styles.imgExercicio}
-            src={supRetoImg}
-            alt="execução supino reto"
+          <Carroussel 
+            img1={supRetoImg} 
+            img2={supRetoImg}
+            img3={supRetoImg}
+            img4={supRetoImg}
           />
 
         </section>
@@ -36,6 +38,11 @@ export default function ExercicioPage() {
 
       <div className={styles.info}>
         <h2 className={styles.info__nome}>SUPINO RETO COM BARRA</h2>
+
+        <div className={styles.info__divTitulo}>
+          <h3 className={styles.info__titulo}>Instruções</h3>
+        </div>
+
         <div className={styles.info__passos}>
           <p>1. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
             Pariatur, doloribus!</p>
