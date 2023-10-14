@@ -1,4 +1,6 @@
 const db = require('../db.js');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 module.exports ={
     buscarUsuarios: ()=>{
         return new Promise((aceito, rejeitado)=>{
@@ -23,19 +25,21 @@ module.exports ={
         });
     },
 
-    inserir: (email_entrada, senha_entrada) =>{
+    inserir: (nome_entrada, email_entrada, senha_entrada, tel_entrada, data_entrada) =>{
         return new Promise((aceito, rejeitado)=>{
 
-            db.query('INSERT INTO usuario (email, senha) VALUES (?, ?)', [email_entrada, senha_entrada], (error, results)=>{
-                if(error) { rejeitado(error); return; }
-                aceito(results.insertEmail);
+            bcrypt.hash(senha_entrada, saltRounds, (err, hash) =>{
                 
-                }
-            );
+                db.query('INSERT INTO usuario (nome, email, senha, telefone_celular, data_nascim) VALUES (?, ?, ?, ?, ?)', [nome_entrada, email_entrada, hash, tel_entrada, data_entrada], (error, results)=>{
+                    if(error) { rejeitado(error); return; }
+                    aceito(results.insertEmail);
+                    }
+                );
+                                
+            })
+   
         });
-    }
+    
+    },
 };
 
-/* function login (email, senha){
-    db.query('SELECT *FROM usuario WHERE email = ?' [email],)
-} */ 

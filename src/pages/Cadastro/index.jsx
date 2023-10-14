@@ -1,4 +1,4 @@
- import React, { useState } from 'react'
+import React, { useState } from 'react'
 import styles from './Cadastro.module.scss'
 import Input from 'componentes/Input'
 import BotaoSubmit from 'componentes/BotaoSubmit'
@@ -11,26 +11,32 @@ import Menu from 'componentes/Menu'
 
 export default function Cadastro() {
 
+  const [nome, setNome] = useState('')
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
   const [confirmSenha, setConfirmSenha] = useState('')
+  const [tel, setTel] = useState('')
+  const [data, setData] = useState('')
 
   /* const valueInput = e => setDados({ ...dados, email: email, senha: senha,}) */
 
   const validaForm = (e) => {
-    e.preventDefault()  
+    e.preventDefault()
 
-    console.log(email, senha)
+    console.log(nome, email, senha, tel, data)
 
-    if(senha === confirmSenha) {
+    if (senha === confirmSenha) {
       aoSalvar()
     } else {
       console.log("as senhas nao são iguais")
     }
 
+    setNome('')
     setEmail('')
     setSenha('')
     setConfirmSenha('')
+    setTel('')
+    setData('')
   }
 
   const aoSalvar = async () => {
@@ -43,14 +49,18 @@ export default function Cadastro() {
     }
 
     await axios.post('http://localhost:3001/api/usuario_unit', {
+      nome: nome,
       email: email,
-      senha: senha
+      senha: senha,
+      tel: tel,
+      data: data,
+      
     }, headers)
-    .then((response) => {
-      console.log(response)
-    }).catch((err) => {
-      console.log(err.response)
-    })
+      .then((response) => {
+        console.log(response)
+      }).catch((err) => {
+        console.log(err.response)
+      })
   }
 
   return (
@@ -67,49 +77,81 @@ export default function Cadastro() {
 
         <div className={styles.cadastro__form}>
           <form action="" onSubmit={validaForm}>
-          {/* <Input 
+            {/* <Input 
               label="Nome" 
               type="text" 
               conexao="nome" 
               placeholder="Digite seu nome"
             /> */}
 
-            <Input 
-              label="E-mail" 
-              type="text" 
-              conexao="email" 
+            <Input
+              label="Nome"
+              type="text"
+              conexao="nome"
+              placeholder="Digite seu nome"
+              aoAlterado={valor => setNome(valor)}
+              value={nome}
+            />
+
+            <Input
+              label="E-mail"
+              type="email"
+              conexao="email"
               placeholder="Digite seu email"
               aoAlterado={valor => setEmail(valor)}
               value={email}
             />
 
-            <Input 
-              label="Senha" 
-              type="text" 
-              conexao="password" 
+            <Input
+              label="Senha"
+              type="password"
+              conexao="password"
               placeholder="Digite sua senha"
               aoAlterado={valor => setSenha(valor)}
               value={senha}
             />
 
-            <Input 
-              label="Confirme sua senha" 
-              type="text" 
-              conexao="Confirm-password" 
+            <Input
+              label="Confirme sua senha"
+              type="password"
+              conexao="Confirm-password"
               placeholder="Confirme sua senha"
               aoAlterado={valor => setConfirmSenha(valor)}
               value={confirmSenha}
             />
 
-            <BotaoSubmit type="submit" value="Cadastrar"/>
+            <div className={styles.cadastro__formDiv}>
+              <Input
+                label="Telefone"
+                type="tel"
+                conexao="telefone"
+                placeholder="Digite seu telefone"
+                aoAlterado={valor => setTel(valor)}
+                value={tel}
+                pattern="[0-9]{2} [0-9]{5}-[0-9]{4}"
+              />
+
+              <Input
+                label="Data de Nascimento"
+                type="date"
+                conexao="ddn"
+                placeholder=""
+                aoAlterado={valor => setData(valor)}
+                value={data}
+              />
+            </div>
+
+            <BotaoSubmit type="submit" value="Cadastrar" />
           </form>
         </div>
 
         <div className={styles.cadastro__toCadastro}>
           <h3>Do you have an account?</h3>
-          <LinkDefault azul texto="&lt; Sign in" to="/login"/>
+          <LinkDefault azul texto="&lt; Sign in" to="/login" />
         </div>
       </main>
     </section>
   )
 }
+
+

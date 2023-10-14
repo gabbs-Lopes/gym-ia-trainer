@@ -35,8 +35,10 @@ export default function MenuLateral({ mudaEstadoMenu, estado }) {
                 <LinksMenu icone={iconeCasa} texto="Início" />
             </Link>
 
-            <Link className="link" to="/">
-              <LinksMenu icone={iconeCasa} texto="Sobre Nós" />
+            <a href="#sobreNos" className="link">Sobre Nós</a>
+
+            <Link className="link" to="/" onClick={mudaEstadoMenu}>
+              <LinksMenu icone={iconeCasa} texto="Sobre Nós" />{/* resolve um bagulho aqui de links */}
             </Link>
 
             <Link className="link" to="/">
@@ -47,9 +49,11 @@ export default function MenuLateral({ mudaEstadoMenu, estado }) {
               <LinksMenu icone={iconeCasa} texto="Seja um farnqueado" />
             </Link>
 
-            <Link className="link" to="/">
-              <LinksMenu icone={iconeCasa} texto="Apoie O projeto" />
+            <Link className="link" to="/login">
+              <LinksMenu icone={iconeCasa} texto="Entrar" />
             </Link>
+
+            <button>Logout</button>
         </div>
       </div>
 

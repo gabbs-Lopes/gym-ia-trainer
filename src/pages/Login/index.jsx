@@ -1,18 +1,76 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useNavigate } from "react-router-dom"
 import styles from './Login.module.scss'
 
 import Input from 'componentes/Input'
 import BotaoSubmit from 'componentes/BotaoSubmit'
-import LinkDefault from 'componentes/LinkDefault'
 import Menu from 'componentes/Menu'
 
+import axios from 'axios'
+
 import muck from 'assets/iconeMuck2.png'
+import LinkDefault from 'componentes/LinkDefault'
+
 
 export default function Login() {
+
+
+  /* const [statusUser, setStatusUser] = useState('') */
 
   // Para Fidel Castro Mendes
   const [emailLogin, setEmailLogin] = useState('')
   const [senhaLogin, setSenhaLogin] = useState('')
+
+  const submitLogin = (e) => {
+    e.preventDefault()
+
+    console.log(emailLogin, senhaLogin)
+
+    findUser()
+
+    setEmailLogin('')
+    setSenhaLogin('')
+  }
+
+  const navigate = useNavigate()
+
+  /* const headers = {
+    'headers': {
+      withCredentials: true
+    }
+  } */
+
+
+ /*  axios.defaults.withCredentials = true;  */
+
+  const findUser =  () => {
+    axios.post('http://localhost:3001/api/login', {
+      email: emailLogin,
+      senha: senhaLogin
+    })
+    .then(res => {
+      if(res.data.message) {
+      alert(/* res.data.Message */ "!")
+      } else {
+      navigate('/perfil')
+      }
+      /* console.log(result) */
+      console.log(res.data.result)
+    })
+  }
+
+  useEffect(() => {
+    axios.get("http://localhost:3001/api/login").then((res) => {
+      if (res.data.loggedIn === true) {
+        console.log(res.data.loggedIn)
+        console.log(res.data.user)
+        /* console.log("requisição get funcionou") */
+      } else {
+        console.log(res.data.loggedIn)
+      /*   console.log("requisição get fail") */
+      }
+    })
+  }, [])
 
   return (
     <section className={styles.login}>
@@ -27,9 +85,24 @@ export default function Login() {
         </div>
 
         <div className={styles.login__form}>
-          <form action="">
-            <Input label="E-mail" type="text" conexao="email" placeholder="Digite seu email"/>
-            <Input label="Senha" type="text" conexao="password" placeholder="Digite sua senha"/>
+          <form action="" onSubmit={submitLogin}>
+            <Input 
+              label="E-mail" 
+              type="text" 
+              conexao="email" 
+              placeholder="Digite seu email"
+              aoAlterado={value => setEmailLogin(value)}
+              value={emailLogin}
+            />
+
+            <Input 
+              label="Senha" 
+              type="text" 
+              conexao="password" 
+              placeholder="Digite sua senha"
+              aoAlterado={value => setSenhaLogin(value)}
+              value={senhaLogin}
+            />
 
             <BotaoSubmit type="submit" value="Entrar"/>
           </form>

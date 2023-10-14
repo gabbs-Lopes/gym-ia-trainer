@@ -17,6 +17,7 @@ export default function Home() {
         <section className={styles.porqueNosEscolher}>
           <div className={styles.porqueNosEscolher__div} >
             <img 
+            id='sobreNos'
             src={imgPNE} 
             alt="Jovem desportista amarrando cadarço na academia" 
             />

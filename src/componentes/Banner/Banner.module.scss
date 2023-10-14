@@ -1,7 +1,7 @@
 @import '../../styles/variaveis';
 
 .banner {
-    background-image: url('../../assets/bannerHome.png');
+    background-image: url('../../assets/bannerHome.jpg');
     background-size: cover;
     width: 100vw;
     height: 100vh;
@@ -20,6 +20,6 @@
         padding: 0 1em;
 
         position: absolute;
-        bottom: 25vh;
+        bottom: 20vh;
     }
 }

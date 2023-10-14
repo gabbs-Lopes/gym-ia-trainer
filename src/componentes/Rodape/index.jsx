@@ -3,6 +3,7 @@ import styles from './Rodape.module.scss'
 
 import iconeInsta from 'assets/icones/instagram.png'
 import LinkDefault from 'componentes/LinkDefault'
+import { Link } from 'react-scroll';
 
 export default function Rodape() {
     return (
@@ -46,11 +47,20 @@ export default function Rodape() {
             <section className={styles.navFooter}>
                 <h2>Links</h2>
                 <div>
-                    <LinkDefault texto="Sobre Nós" to="/?"/>
-                    <LinkDefault texto="Serviços" to="/?"/>
-                    <LinkDefault texto="Experimente" to="/?"/>
-                    <LinkDefault texto="Trabalhe conosco" to="/?"/>
-                    <LinkDefault texto="Política de Privacidade" to="/politicaDePrivacidade"/>
+                    <Link
+                        className={styles.linkFooter}
+                        to="sobreNos"
+                        spy={true}
+                        smooth={true}
+                        offset={50}
+                        duration={500}
+                    >
+                        Sobre Nós
+                    </Link>
+                    <LinkDefault texto="Serviços" to="/?" />
+                    <LinkDefault texto="Experimente" to="/exercicios" />
+                    <LinkDefault texto="Trabalhe conosco" to="/?" />
+                    <LinkDefault texto="Política de Privacidade" to="/politicaDePrivacidade" />
                 </div>
             </section>
 
