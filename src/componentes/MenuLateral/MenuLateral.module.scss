@@ -85,4 +85,13 @@
             text-decoration: none;
         }
     }
+
+    &__LinkDiv {
+        display: flex;
+        align-items: flex-end;
+        
+        img {
+            margin-right: 8px;
+        }
+    }
 }

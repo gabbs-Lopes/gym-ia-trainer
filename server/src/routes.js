@@ -1,24 +1,17 @@
 const express = require('express');
 const router = express.Router();
 const db = require('./db.js');
-const jwt = require('jsonwebtoken');
+/* const jwt = require('jsonwebtoken'); */
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const session = require('express-session');
-const bcrypt = require('bcrypt');
+/* const bcrypt = require('bcrypt'); */
 
 const userController = require('./controllers/userController');
 
 router.use(express.json())
 router.use(cookieParser())
-router.use(cors(
-    {
-        origin: ["http://localhost:3000"],
-        methods: ["POST, GET"],
-        credentials: true
-    }
-))
 
 router.use(bodyParser.urlencoded({ extended: true }));
 
@@ -32,7 +25,33 @@ router.use(session({
     },
 })
 );
+
+router.use(cors())
+
 router.post('/login', (req, res) => {
+    const sql = "SELECT * FROM usuario WHERE email = ?";
+
+    /* const values = [
+        req.body.email
+    ] */
+
+    db.query(sql, [req.body.email], (err, data) => {
+        if (err) return res.json("Login Falied");
+        if(data.length > 0) {
+            return res.json("Login Successfully")
+        } else {
+            return res.json("No Record")
+        }
+    })
+})
+
+
+
+
+
+
+
+/* router.post('/login', (req, res) => {
     const email = req.body.email;
     const senha = req.body.senha;
 
@@ -50,11 +69,11 @@ router.post('/login', (req, res) => {
                     if (response) {
                         req.session.user = result;
                         /* console.log(req.session.user); */
-                        res.send(result);
+                        /*res.send(result);*/
                         /* console.log(result) */
                         /* console.log(req.session.user) */
-                    } else {
-                        res.send({ message: "Email ou senha incorretos!" });
+                    /*} else { */
+/*                         res.send({ message: "Email ou senha incorretos!" });
                     }
                 }); 
             } else {
@@ -67,10 +86,10 @@ router.post('/login', (req, res) => {
 
     );// <--- os dados da sessão se perdem aqui.
 
-});
+}); */
 
 
-router.get('/login', (req, res) => {
+/* router.get('/login', (req, res) => {
     if (req.session.user) {
         res.send({ loggedIn: true, user: req.session.user })
     } else {        
@@ -79,7 +98,7 @@ router.get('/login', (req, res) => {
     /* console.log(req.body.email, req.body.senha) */
     /* console.log(req.session.user) */
     /* console.log(sessionTest) */
-})                            
+/* }) */                       
 
 router.get('/usuario', userController.buscarUsuarios);
 router.get('/usuario_unit/:email', userController.buscarUm);

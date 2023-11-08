@@ -27,7 +27,10 @@ export default function NotFound() {
           <p className={styles.notFound__p}>Não foi possível encontrar a página que você buscava.</p>
           <div 
             className={styles.notFound__div}
-            onClick={() => navegar(-1)}
+            onClick={() => {
+              navegar(-1)
+              console.log("clicado")
+            }}
           >
             <Button fixed saibaMais texto="Voltar" to=""/>
           </div>

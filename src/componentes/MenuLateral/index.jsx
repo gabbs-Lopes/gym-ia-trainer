@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './MenuLateral.module.scss'
 import { Link } from 'react-router-dom'
+import { Link as LinkSmooth } from 'react-scroll';
 
 import LinksMenu from 'componentes/Menu/LinksMenu'
 import Logo from 'componentes/Logo'
@@ -31,29 +32,36 @@ export default function MenuLateral({ mudaEstadoMenu, estado }) {
         </Link>
 
         <div className={styles.menuLateral__divLinks}>
-            <Link className="link" to="/">
-                <LinksMenu icone={iconeCasa} texto="Início" />
-            </Link>
+          <Link className="link" to="/">
+            <LinksMenu icone={iconeCasa} texto="Início" />
+          </Link>
 
-            <a href="#sobreNos" className="link">Sobre Nós</a>
+          <LinkSmooth
+            className={styles.menuLateral__LinkDiv}
+            onClick={mudaEstadoMenu}
+            to="sobreNos"
+            spy={true}
+            smooth={true}
+            offset={100}
+            duration={800}
+          >
+            <img src={iconeCasa} alt="icone de uma casa" />
+            Sobre Nós
+          </LinkSmooth>
 
-            <Link className="link" to="/" onClick={mudaEstadoMenu}>
-              <LinksMenu icone={iconeCasa} texto="Sobre Nós" />{/* resolve um bagulho aqui de links */}
-            </Link>
+          <Link className="link" to="/">
+            <LinksMenu icone={iconeCasa} alt="icone de uma casa" texto="Entre em contato" />
+          </Link>
 
-            <Link className="link" to="/">
-              <LinksMenu icone={iconeCasa} texto="Entre em contato" />
-            </Link>
+          <Link className="link" to="/">
+            <LinksMenu icone={iconeCasa} texto="Seja um farnqueado" />
+          </Link>
 
-            <Link className="link" to="/">
-              <LinksMenu icone={iconeCasa} texto="Seja um farnqueado" />
-            </Link>
+          <Link className="link" to="/login">
+            <LinksMenu icone={iconeCasa} texto="Entrar" />
+          </Link>
 
-            <Link className="link" to="/login">
-              <LinksMenu icone={iconeCasa} texto="Entrar" />
-            </Link>
-
-            <button>Logout</button>
+          <button>Logout</button>
         </div>
       </div>
 

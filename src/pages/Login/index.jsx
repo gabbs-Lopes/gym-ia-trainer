@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState/* , useEffect */ } from 'react'
 import { useNavigate } from "react-router-dom"
 import styles from './Login.module.scss'
 
@@ -21,7 +21,7 @@ export default function Login() {
   const [emailLogin, setEmailLogin] = useState('')
   const [senhaLogin, setSenhaLogin] = useState('')
 
-  const submitLogin = (e) => {
+  /* const submitLogin = (e) => {
     e.preventDefault()
 
     console.log(emailLogin, senhaLogin)
@@ -30,7 +30,7 @@ export default function Login() {
 
     setEmailLogin('')
     setSenhaLogin('')
-  }
+  } */
 
   const navigate = useNavigate()
 
@@ -41,36 +41,57 @@ export default function Login() {
   } */
 
 
- /*  axios.defaults.withCredentials = true;  */
 
-  const findUser =  () => {
+  axios.defaults.withCredentials = false; 
+
+  function handleSubmit(e) {
+    e.preventDefault()
+
+    axios.post('http://localhost:3001/api/login', {email: emailLogin, senha: senhaLogin})      
+    .then(res =>  {
+      console.log(res)
+      if(res.data === "Login Succssfully") {
+        console.log("abriu")
+        navigate('/perfil')
+      } else {
+        console.log("pa casa dormi")
+      }
+    })
+    .catch(err => console.log(err));
+
+    setEmailLogin('')
+    setSenhaLogin('')
+
+  }
+
+  /* const findUser =  () => {
     axios.post('http://localhost:3001/api/login', {
       email: emailLogin,
       senha: senhaLogin
     })
     .then(res => {
       if(res.data.message) {
-      alert(/* res.data.Message */ "!")
+      alert(/* res.data.Message  "!")
       } else {
       navigate('/perfil')
       }
-      /* console.log(result) */
+      /* console.log(result) 
       console.log(res.data.result)
     })
-  }
+  } */
 
-  useEffect(() => {
+  /* useEffect(() => {
     axios.get("http://localhost:3001/api/login").then((res) => {
       if (res.data.loggedIn === true) {
         console.log(res.data.loggedIn)
         console.log(res.data.user)
-        /* console.log("requisição get funcionou") */
+        /* console.log("requisição get funcionou")
       } else {
         console.log(res.data.loggedIn)
-      /*   console.log("requisição get fail") */
+         console.log("requisição get fail") 
       }
     })
-  }, [])
+  }, []) */
 
   return (
     <section className={styles.login}>
@@ -85,7 +106,7 @@ export default function Login() {
         </div>
 
         <div className={styles.login__form}>
-          <form action="" onSubmit={submitLogin}>
+          <form action="" onSubmit={handleSubmit}>
             <Input 
               label="E-mail" 
               type="text" 

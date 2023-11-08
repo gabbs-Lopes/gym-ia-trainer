@@ -1,12 +1,15 @@
+@import '../../styles/variaveis';
 
 .carrouselDestaques {
-    background-color: black;
+    background-color: $preto-fundo;
     display: flex;
     justify-content: center;
 
     &__slide {
         text-align: center;
     }
+
+    margin: -1px;
 }
 
 .carrouselExercicio {

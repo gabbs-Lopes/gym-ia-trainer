@@ -53,5 +53,19 @@ module.exports = {
             json.error = 'Campos não enviados';
         }
         res.json(json);
+    },
+
+    Headers() {
+        return [
+            {
+                source: '/path*',
+                headers: [
+                    {key: 'Access-Control-Allow-Credencials', value: 'true'},
+                    {key: 'Access-Control-Allow-Origin', value: '*'},
+                    {key: 'Access-Control-Allow-Methods', value: 'GET,POST,PATCH,DELETE,PUT,OPTIONS'},
+                    {key: 'Access-Control-Allow-Headers', value: 'X-CSRF-Token'}
+                ]
+            }
+        ]
     }
 }

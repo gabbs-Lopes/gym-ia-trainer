@@ -3,7 +3,7 @@ import styles from './Rodape.module.scss'
 
 import iconeInsta from 'assets/icones/instagram.png'
 import LinkDefault from 'componentes/LinkDefault'
-import { Link } from 'react-scroll';
+import {Link as LinkSmooth} from 'react-scroll';
 
 export default function Rodape() {
     return (
@@ -47,7 +47,7 @@ export default function Rodape() {
             <section className={styles.navFooter}>
                 <h2>Links</h2>
                 <div>
-                    <Link
+                    <LinkSmooth
                         className={styles.linkFooter}
                         to="sobreNos"
                         spy={true}
@@ -56,7 +56,7 @@ export default function Rodape() {
                         duration={500}
                     >
                         Sobre Nós
-                    </Link>
+                    </LinkSmooth>
                     <LinkDefault texto="Serviços" to="/?" />
                     <LinkDefault texto="Experimente" to="/exercicios" />
                     <LinkDefault texto="Trabalhe conosco" to="/?" />

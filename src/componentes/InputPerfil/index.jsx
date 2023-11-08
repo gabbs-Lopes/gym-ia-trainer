@@ -1,0 +1,11 @@
+import React from 'react'
+import styles from './InputPerfil.module.scss'
+
+export default function InputPerfil({ type, label, conexao, placeholder, editarDados}) {
+  return (
+    <div className={editarDados ? styles.divInput : ''}>
+        <label htmlFor={conexao}>{label}</label>
+        <input type={type} placeholder={placeholder}/>
+    </div>
+  )
+}
