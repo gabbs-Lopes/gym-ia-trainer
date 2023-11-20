@@ -41,5 +41,41 @@ module.exports ={
         });
     
     },
+
+    alterar: (id, nome_entrada, email_entrada, senha_entrada, tel_entrada) =>{
+        return new Promise((aceito, rejeitado)=>{
+
+            bcrypt.hash(senha_entrada, saltRounds, (err, hash) =>{
+                
+                db.query('UPDATE usuario SET nome = ?, email = ?, senha = ?, telefone_celular = ? WHERE id = ?', [nome_entrada, email_entrada, hash, tel_entrada, id],(error, results)=>{
+                    if(error) { rejeitado(error); return; }
+                    aceito(results);
+                    }
+                );
+                                
+            })
+   
+        });
+    
+    }
 };
+
+/* alterar: (id, nome_entrada, email_entrada, senha_entrada, tel_entrada) =>{
+    return new Promise((aceito, rejeitado)=>{
+
+        bcrypt.hash(senha_entrada, saltRounds, (err, hash) =>{
+            
+            db.query('UPDATE usuario SET nome = ?, email = ?, senha = ?, telefone_celular = ? WHERE id = ?', [nome_entrada, email_entrada, senha_entrada, tel_entrada, id],(error, results)=>{
+                if(error) { rejeitado(error); return; }
+                aceito(results);
+                }
+            );
+                            
+        })
+
+    });
+
+} */
+
+
 

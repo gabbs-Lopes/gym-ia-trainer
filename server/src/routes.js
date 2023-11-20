@@ -1,57 +1,50 @@
 const express = require('express');
 const router = express.Router();
 const db = require('./db.js');
-/* const jwt = require('jsonwebtoken'); */
+const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const session = require('express-session');
-/* const bcrypt = require('bcrypt'); */
+const bcrypt = require('bcrypt');
+const flash = require('connect-flash');
 
 const userController = require('./controllers/userController');
 
 router.use(express.json())
 router.use(cookieParser())
+router.use(cors(
+    {
+        origin: ["http://localhost:3000"],
+        methods: ["POST, GET"],
+        credentials: true
+    }
+))
 
 router.use(bodyParser.urlencoded({ extended: true }));
 
 router.use(session({
     key: "userId",
     secret: "user", //subscribe
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-        expires: 60 * 60 * 24,
-    },
+    resave: true, //false
+    saveUninitialized: true //,false
+   /*  cookie: {
+        expires: 60 * 60 * 24, 
+    },*/
 })
 );
 
-router.use(cors())
+router.use(flash())
 
-router.post('/login', (req, res) => {
-    const sql = "SELECT * FROM usuario WHERE email = ?";
+//middleware
 
-    /* const values = [
-        req.body.email
-    ] */
-
-    db.query(sql, [req.body.email], (err, data) => {
-        if (err) return res.json("Login Falied");
-        if(data.length > 0) {
-            return res.json("Login Successfully")
-        } else {
-            return res.json("No Record")
-        }
-    })
+router.use((req, res, next) =>{
+    res.locals.success_message = req.flash("Succes_message")
+    res.locals.error_message = req.flash("Error_message")
+    next()
 })
 
-
-
-
-
-
-
-/* router.post('/login', (req, res) => {
+router.post('/login', (req, res) => {
     const email = req.body.email;
     const senha = req.body.senha;
 
@@ -65,31 +58,37 @@ router.post('/login', (req, res) => {
             }
 
             if (result.length > 0) {
+                console.log("entrou if result length");
                  bcrypt.compare(senha, result[0].senha, (error, response) => {
                     if (response) {
-                        req.session.user = result;
+                        console.log("entrou response");
+                        req.session.user = result; 
                         /* console.log(req.session.user); */
-                        /*res.send(result);*/
+                        res.send(result);
+                        console.log("pós send");
                         /* console.log(result) */
                         /* console.log(req.session.user) */
-                    /*} else { */
-/*                         res.send({ message: "Email ou senha incorretos!" });
+                    } else {
+                        res.send({ message: "Email ou senha incorretos!" });
                     }
                 }); 
             } else {
                 res.send({ message: "Usuario nao existe" });
             }
-
-            console.log(result)
+            let dados = '';
+            console.log(result[0])
+            dados = result
+            console.log(dados[0].nome) 
+            
         },
         
 
     );// <--- os dados da sessão se perdem aqui.
 
-}); */
+});
 
 
-/* router.get('/login', (req, res) => {
+router.get('/login', (req, res) => {
     if (req.session.user) {
         res.send({ loggedIn: true, user: req.session.user })
     } else {        
@@ -98,12 +97,12 @@ router.post('/login', (req, res) => {
     /* console.log(req.body.email, req.body.senha) */
     /* console.log(req.session.user) */
     /* console.log(sessionTest) */
-/* }) */                       
+})                            
 
 router.get('/usuario', userController.buscarUsuarios);
 router.get('/usuario_unit/:email', userController.buscarUm);
 router.post('/usuario_unit', userController.inserir);
-
-
+router.put('/usuario_unit/:id', userController.alterar);
 
 module.exports = router;
+

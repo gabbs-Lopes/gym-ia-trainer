@@ -5,7 +5,11 @@ export default function InputPerfil({ type, label, conexao, placeholder, editarD
   return (
     <div className={editarDados ? styles.divInput : ''}>
         <label htmlFor={conexao}>{label}</label>
-        <input type={type} placeholder={placeholder}/>
+        <input 
+          type={type} 
+          placeholder={placeholder}
+          /* value="" */
+        />
     </div>
   )
 }

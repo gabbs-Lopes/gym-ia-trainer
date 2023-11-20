@@ -1,12 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import imgPerfil from 'assets/fotosPerfil/fidel.png'
 import styles from './Perfil.module.scss'
 import NavBarLogado from 'componentes/NavBarLogado'
 import '../../styles/globalStyles.scss'
 import InputPerfil from 'componentes/InputPerfil'
 import iconeEditar from '../../assets/icones/editar.png'
+/* const db = require('./db.js'); */
 
 export default function Perfil() {
+
+  // aqui, dps eu me viro pra passar pro elemento
+  
+
+
+const [togglePerfil, setTogglePerfil] = useState(false)
+
+  /*function TogglePerfil() {
+    setTogglePerfil(!togglePerfil)
+  }*/
+  
+  console.log(togglePerfil)
   return (
     <>
       <header>
@@ -16,7 +29,11 @@ export default function Perfil() {
       <main className={styles.main}>
         <section className={styles.left}>
           <div className={styles.left__perfilToggle}>            
-            <div className={`${styles.left__menu} ${styles.left__dados}`}>
+            <div 
+              className={`${styles.left__menu} 
+              ${styles.left__dados}`}
+              onClick={() => setTogglePerfil(!togglePerfil)}
+            >
               <h2>Account Info</h2>
               <p>Details about your personal information</p>
             </div>
@@ -74,7 +91,6 @@ export default function Perfil() {
                   conexao="password" 
                   placeholder="Digite sua Senha"
                 />
-
 
                 <InputPerfil 
                   editarDados

@@ -36,7 +36,7 @@ module.exports = {
         let tel_entrada = req.body.tel;
         let data_entrada = req.body.data;
 
-        console.log(`email: "${email_entrada}" senha: "${senha_entrada}"`)
+        console.log(`email: "${email_entrada}" senha: "${senha_entrada}" "telefone:"${tel_entrada}"nome:"${nome_entrada}`)
 
         if(email_entrada && senha_entrada){
             let cadastro_user = await userService.inserir(nome_entrada, email_entrada, senha_entrada, tel_entrada, data_entrada);
@@ -48,6 +48,32 @@ module.exports = {
                 tel_entrada,
                 data_entrada
                 
+            };
+        }else{
+            json.error = 'Campos não enviados';
+        }
+        res.json(json);
+    },
+
+    alterar: async(req, res) =>{
+        let json = {error:'', result:{}};
+
+        let id = req.params.id;
+        let email_entrada = req.body.email;
+        let senha_entrada = req.body.senha;
+        let nome_entrada = req.body.nome;
+        let tel_entrada = /* req.body.tel */11995185096;
+
+        console.log(`email: "${email_entrada}" senha: "${senha_entrada}" "telefone:"${tel_entrada}"nome:"${nome_entrada}`)
+
+        if(id || tel_entrada || nome_entrada || email_entrada || senha_entrada){
+            await userService.alterar(id, nome_entrada, email_entrada, senha_entrada, tel_entrada);
+            json.result = {
+                id,
+                nome_entrada,
+                email_entrada,
+                senha_entrada,
+                tel_entrada            
             };
         }else{
             json.error = 'Campos não enviados';

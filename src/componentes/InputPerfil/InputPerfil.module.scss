@@ -14,13 +14,14 @@
 
     input {
         font-family: $fonte-principal;
-        font-size: 14px;
-        padding: .8em;
+        font-size: 17px;
+        padding: 1em;
         border: 1px solid $azul;
         border-radius: 5px;
     }
 
     input::placeholder {
         font-family: $fonte-principal;
+        font-size: 16px;
     }
 }
