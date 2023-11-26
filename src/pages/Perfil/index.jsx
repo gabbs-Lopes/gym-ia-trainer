@@ -4,16 +4,19 @@ import styles from './Perfil.module.scss'
 import NavBarLogado from 'componentes/NavBarLogado'
 import '../../styles/globalStyles.scss'
 import InputPerfil from 'componentes/InputPerfil'
-import iconeEditar from '../../assets/icones/editar.png'
 /* import { div } from '@tensorflow/tfjs' */
 /* const db = require('./db.js'); */
 
-import iconeConfig from '../../assets/icones/iconeConfig.png'
+import iconeEditar from '../../assets/icones/editar.png'
+import iconeSettings from '../../assets/icones/iconeSettings.png'
+import iconeInfo from '../../assets/icones/info.png'
 import PerfilToggle from 'componentes/PerfilToggle'
 
 export default function Perfil() {
 
   // aqui, dps eu me viro pra passar pro elemento
+
+
   
 
 
@@ -30,18 +33,18 @@ const [togglePerfil, setTogglePerfil] = useState(true)
         <section className={styles.left}>
           <div className={styles.left__perfilToggle}>
             <PerfilToggle 
-              titulo="Account Info"
+              titulo="Infomações Perfil"
               subtitulo="Details about your personal information"
-              img={iconeConfig}
+              img={iconeInfo}
               alt="icone de configuração"
               estadoToggle={togglePerfil}
               mudaEstado={() => setTogglePerfil(true)}
             />
             
             <PerfilToggle 
-              titulo="Account Settings"
+              titulo="Configurações"
               subtitulo="customize and manage your account"
-              img={iconeConfig}
+              img={iconeSettings}
               alt="icone de configuração"
               estadoToggle={togglePerfil}
               mudaEstado={() => setTogglePerfil(false)}
@@ -72,37 +75,40 @@ const [togglePerfil, setTogglePerfil] = useState(true)
               </div>
 
               <div className={styles.info__editarDados}>
-                <h2>Change User Information Here</h2>
+                <h2>Alterar dados Pessoais</h2>
                 <form action="">
                   <div className={styles.info__editarDados_divInputs}>
                     <InputPerfil 
                       editarDados
                       type="text" 
-                      label="Full Name*" 
+                      label="Full Name" 
                       conexao="name" 
                       placeholder="Digite seu Nome Completo"
+                      required
                     />
 
                     <InputPerfil 
                       editarDados
                       type="email" 
-                      label="Email Address*" 
+                      label="Email Address" 
                       conexao="email" 
                       placeholder="Digite seu E-mail"
+                      required
                     />
 
                     <InputPerfil 
                       editarDados
                       type="password" 
-                      label="Password*" 
+                      label="Password" 
                       conexao="password" 
                       placeholder="Digite sua Senha"
+                      required
                     />
 
                     <InputPerfil 
                       editarDados
                       type="tel" 
-                      label="Phone Number*" 
+                      label="Phone Number" 
                       conexao="tel" 
                       placeholder="(xx) xxxxx-xxxx"
                     />

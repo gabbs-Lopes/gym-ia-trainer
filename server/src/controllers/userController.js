@@ -64,7 +64,7 @@ module.exports = {
         let nome_entrada = req.body.nome;
         let tel_entrada = /* req.body.tel */11995185096;
 
-        console.log(`email: "${email_entrada}" senha: "${senha_entrada}" "telefone:"${tel_entrada}"nome:"${nome_entrada}`)
+        console.log(`email: "${email_entrada}" senha: "${senha_entrada}" "telefone:"${tel_entrada}"nome:"${nome_entrada} "id:${id}"`)
 
         if(id || tel_entrada || nome_entrada || email_entrada || senha_entrada){
             await userService.alterar(id, nome_entrada, email_entrada, senha_entrada, tel_entrada);

@@ -14,7 +14,7 @@
  * limitations under the License.
  * =============================================================================
  */
-import * as posedetection from "@tensorflow-models/posedetections";
+import * as posenet from "@tensorflow-models/posenet";
 import * as tf from "@tensorflow/tfjs";
 
 const color = "aqua";
@@ -42,7 +42,7 @@ function setDatGuiPropertyCss(propertyText, liCssString, spanCssString = "") {
   var spans = document.getElementsByClassName("property-name");
   for (var i = 0; i < spans.length; i++) {
     var text = spans[i].textContent || spans[i].innerText;
-    if (text == propertyText) {
+    if (text === propertyText) {
       spans[i].parentNode.parentNode.style = liCssString;
       if (spanCssString !== "") {
         spans[i].style = spanCssString;
@@ -103,7 +103,7 @@ export function drawSegment([ay, ax], [by, bx], color, scale, ctx) {
  * Draws a pose skeleton by looking up all adjacent keypoints/joints
  */
 export function drawSkeleton(keypoints, minConfidence, ctx, scale = 1) {
-  const adjacentKeyPoints = posedetection.getAdjacentKeyPoints(
+  const adjacentKeyPoints = posenet.getAdjacentKeyPoints(
     keypoints,
     minConfidence
   );
@@ -141,7 +141,7 @@ export function drawKeypoints(keypoints, minConfidence, ctx, scale = 1) {
  * ankles
  */
 export function drawBoundingBox(keypoints, ctx) {
-  const boundingBox = posedetection.getBoundingBox(keypoints);
+  const boundingBox = posenet.getBoundingBox(keypoints);
 
   ctx.rect(
     boundingBox.minX,
@@ -189,7 +189,7 @@ export function renderImageToCanvas(image, size, canvas) {
 
 /**
  * Draw heatmap values, one of the model outputs, on to the canvas
- * Read our blog post for a description of posedetection's heatmap outputs
+ * Read our blog post for a description of PoseNet's heatmap outputs
  * https://medium.com/tensorflow/real-time-human-pose-estimation-in-the-browser-with-tensorflow-js-7dd0bc881cd5
  */
 export function drawHeatMapValues(heatMapValues, outputStride, canvas) {
@@ -222,13 +222,13 @@ function drawPoints(ctx, points, radius, color) {
 
 /**
  * Draw offset vector values, one of the model outputs, on to the canvas
- * Read our blog post for a description of posedetection's offset vector outputs
+ * Read our blog post for a description of PoseNet's offset vector outputs
  * https://medium.com/tensorflow/real-time-human-pose-estimation-in-the-browser-with-tensorflow-js-7dd0bc881cd5
  */
 // export function drawOffsetVectors(
 //     heatMapValues, offsets, outputStride, scale = 1, ctx) {
 //   const offsetPoints =
-//       posedetection.singlePose.getOffsetPoints(heatMapValues, outputStride, offsets);
+//       posenet.singlePose.getOffsetPoints(heatMapValues, outputStride, offsets);
 
 //   const heatmapData = heatMapValues.buffer().values;
 //   const offsetPointsData = offsetPoints.buffer().values;

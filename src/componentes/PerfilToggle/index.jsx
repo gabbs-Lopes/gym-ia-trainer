@@ -9,9 +9,9 @@ export default function PerfilToggle({ titulo, subtitulo, img, alt, estadoToggle
         `}
         onClick={mudaEstado}
     >
-        <div style={{display: "flex"}}>
-        <img src={img} alt={alt} />
-        <h2>{titulo}</h2>
+        <div>
+          <img src={img} alt={alt} />
+          <h2>{titulo}</h2>
         </div>
         <p>{subtitulo}</p>
     </div>

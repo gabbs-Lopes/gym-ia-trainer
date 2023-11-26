@@ -3,6 +3,7 @@
 .main {
     width: 100%;
     display: flex;
+    justify-content: space-evenly;
 }
 
 .left {
@@ -10,6 +11,7 @@
     margin-top: 7vh;
 
     &__perfilToggle {
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -103,8 +105,10 @@
             font-size: 14px;
 
             &:hover {
-               background-color: black;
-               color: white;
+                border: 2px solid black;
+                color: black;
+                transition: .1s;
+                font-size: 15px;
             }
         }
     }
@@ -154,4 +158,155 @@
 
 .toggleAtivo {
     color: red;
+}
+
+@media screen and (max-width: 1240px) {
+    .left {
+        width: 60px;
+        display: flex;
+        justify-content: center;
+        margin-left: 40px;
+    }
+
+    .right {
+        width: 90%;
+    }
+
+}
+
+@media screen and (max-width: 860px) {
+    .left {
+        margin-left: 15px;
+    }
+
+    .info {
+        &__dadosPrincipais {
+            width: 93%;
+        }
+
+        &__editarDados {
+            width: 93%;
+
+            &_divInputs {
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr 1fr 1fr 1fr;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 580px) {
+    .left {
+        width: 58px;
+    }
+
+    .info {
+
+        &__dadosPrincipais {
+
+            &_divNome {
+                h2 {
+                    font-size: 17px;
+                }
+            }
+
+            &_btn {
+                margin-right: 1%;
+            }
+        }
+
+        &__editarDados {
+            h2 {
+                text-align: center;
+            }
+
+            &_divInputs {
+                margin: 2em 0 2em 0px;
+            }
+
+            &_btn {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .main {
+        flex-direction: column;
+    }
+
+    .left {
+        width: 100%;
+        margin: 2vh 0;
+        padding: 0;
+        
+        display: flex;
+        justify-content: flex-end;
+
+        &__perfilToggle {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+        }
+    }
+
+    .right {
+        width: 100%;
+    }
+
+    .info {
+
+        &__dadosPrincipais{
+            &_btn {
+                display: none;
+            }
+        }
+    }
+}
+
+// para maior
+
+@media screen and (min-width: 1600px) {
+    .info {
+
+        &__dadosPrincipais {
+
+            &_divImg {
+                width: 129px;
+                height: 129px;
+
+                &__img {
+                    width: 130px;
+                    height: 130px;
+                }
+
+                &__icone {
+                    width: 25px;
+                    position: absolute;
+                    right: 3px;
+                    bottom: 5px;
+                }
+            }
+
+            &_divNome {    
+                h2 {
+                    font-size: 24px;
+                }
+    
+                p {
+                    font-size: 16px;
+                }
+            }
+
+            &_btn {
+                font-size: 18px;
+
+                &:hover {
+                    font-size: 19px;
+                }
+            }
+        }
+    }
 }
