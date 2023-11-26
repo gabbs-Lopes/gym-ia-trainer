@@ -11,7 +11,6 @@ import axios from 'axios'
 import muck from 'assets/iconeMuck2.png'
 import LinkDefault from 'componentes/LinkDefault'
 
-
 export default function Login() {
 
 
@@ -41,8 +40,7 @@ export default function Login() {
   } */
 
 
- /*  axios.defaults.withCredentials = true;  */
-
+  
   const findUser = async () => {
     
     axios.post('http://localhost:3001/api/login', {
@@ -52,24 +50,28 @@ export default function Login() {
     .then(res => {
       console.log("res do index");
       if(res.data.message) {
-      alert(/* res.data.Message */ "!")
+        alert(/* res.data.Message */ "!")
+        console.log("if monkey")
       } else {
-      navigate('/perfil')
+        console.log("else macaco")
       }
       /* console.log(result) */
       console.log(res)
     })
   }
-
+  
+  
   useEffect(() => {
-    axios.get("http://localhost:3001/api/login").then((res) => {
+    axios.defaults.withCredentials = true; 
+    axios.get("http://localhost:3001/api/loggedin")
+    .then((res) => {
       if (res.data.loggedIn === true) {
         console.log(res.data.loggedIn)
         console.log(res.data.user)
-        /* console.log("requisição get funcionou") */
-      } else {
+        console.log("requisição get funcionou") 
+      } else { 
         console.log(res.data.loggedIn)
-      /*   console.log("requisição get fail") */
+        console.log("requisição get fail") 
       }
     })
   }, [])

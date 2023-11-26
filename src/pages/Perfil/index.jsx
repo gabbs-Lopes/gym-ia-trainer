@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import imgPerfil from 'assets/fotosPerfil/fidel.png'
 import styles from './Perfil.module.scss'
 import NavBarLogado from 'componentes/NavBarLogado'
@@ -6,6 +6,8 @@ import '../../styles/globalStyles.scss'
 import InputPerfil from 'componentes/InputPerfil'
 /* import { div } from '@tensorflow/tfjs' */
 /* const db = require('./db.js'); */
+
+import axios from 'axios'
 
 import iconeEditar from '../../assets/icones/editar.png'
 import iconeSettings from '../../assets/icones/iconeSettings.png'
@@ -16,7 +18,36 @@ export default function Perfil() {
 
   // aqui, dps eu me viro pra passar pro elemento
 
+  axios.defaults.withCredentials = true;
 
+  useEffect(()=>{
+    axios.get('http://localhost:3001/api/loggedin')
+      .then((res) => {
+        if (res.data.LoggedIn === true) {
+          console.log(res.data)
+          console.log("abacate", res.data.user)
+        } else {
+          console.log("nao foi")
+          console.log(res.data)
+        }
+      })
+      .catch(err => console.log(err))
+  }, [])
+
+  /*   useEffect(() => {
+    axios.get("http://localhost:3001/api/loggedin")
+    .then((res) => {
+      if (res.data.loggedIn === true) {
+        console.log(res.data.loggedIn)
+        console.log(res.data.user)
+        console.log("requisição get funcionou") 
+      } else { 
+        console.log(res.data.loggedIn)
+        console.log("requisição get fail") 
+      }
+    })
+  }, []) */
+  
   
 
 
