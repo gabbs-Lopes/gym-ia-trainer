@@ -6,7 +6,7 @@ import Button from 'componentes/Button'
 export default function index() {
   return (
     <header className={styles.banner}>
-      <NavBar button/>
+      <NavBar padrao button/>
       <div className={styles.banner__btn}>
         <Button banner texto="Experimente Agora" to="/exercicios"/>
       </div>

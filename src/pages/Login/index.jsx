@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useNavigate } from "react-router-dom"
+/* import { useNavigate } from "react-router-dom" */
 import styles from './Login.module.scss'
 
 import Input from 'componentes/Input'
@@ -31,7 +31,7 @@ export default function Login() {
     setSenhaLogin('')
   }
 
-  const navigate = useNavigate()
+  /* const navigate = useNavigate() */
 
   /* const headers = {
     'headers': {

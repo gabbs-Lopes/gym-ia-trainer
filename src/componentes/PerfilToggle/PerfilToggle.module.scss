@@ -7,12 +7,14 @@
     margin-left: 10%;
     
     border-radius: 5px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.336);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.281);
 
     cursor: pointer;
     
     padding: .8em .6em;
     margin-bottom: 1em;
+
+    transition: all .4s;
 
     div {
         display: flex;

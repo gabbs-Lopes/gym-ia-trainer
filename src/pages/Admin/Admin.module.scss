@@ -1,0 +1,55 @@
+@import '../../styles/variaveis';
+
+
+.main {
+    display: flex;
+}
+
+.menuAdmin {
+    background: url('../../assets/imagens/fundos/fundoAdmin.png');
+    background-size: cover;
+    width: 20%;
+    height: 90vh;
+
+    color: white;
+
+    padding: 2em;
+
+    position: fixed;
+    top: 10vh;
+
+    h2 {
+        font-size: 20px;
+
+        margin-bottom: 2.5em;
+        margin-top: .5em;
+    }
+
+    &__links{
+
+        tr {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        &_icone {
+            
+            img {
+                width: 30px;
+            }
+        }
+
+        &_texto {
+            font-size: 22px;
+            font-family: $fonte-subtitulo2;
+            margin: .9em .6em;
+        }
+    }
+}
+
+.pages {
+    width: 80%;
+
+    margin-left: 20%;
+}

@@ -4,6 +4,8 @@
     width: 100%;
     display: flex;
     justify-content: space-evenly;
+
+    border-top: 1px solid rgba(102, 102, 102, 0.192);
 }
 
 .left {
@@ -181,11 +183,12 @@
 
     .info {
         &__dadosPrincipais {
-            width: 93%;
+            width: 92%;
         }
 
         &__editarDados {
-            width: 93%;
+            margin-bottom: 3vh;
+            width: 92%;
 
             &_divInputs {
                 grid-template-columns: 1fr;
@@ -259,8 +262,57 @@
     .info {
 
         &__dadosPrincipais{
+            &_divNome {
+                margin: 1.2em;
+    
+                h2 {
+                    font-size: 16px;
+                    font-weight: 600;
+                    letter-spacing: 1px;
+                    margin-top: 0em;
+                }
+    
+                p {
+                    font-size: 13px;
+                    margin-top: .3em;
+                }
+            }
+
             &_btn {
                 display: none;
+            }
+
+            &_divImg {
+                width: 79px;
+                height: 79px;
+    
+                &__img {
+                    width: 80px;
+                    height: 80px;
+                }
+            }
+        }
+
+        &__editarDados {
+            background-color: white;
+            width: 92%;
+    
+            border-radius: 5px;
+            box-shadow: 5px 5px 3px rgba(80, 80, 80, 0.418);
+    
+            margin-top: 4vh;
+            padding: 1.7em;
+    
+            h2 {
+                font-size: 22px;
+                letter-spacing: 1px;
+            }
+    
+            &_btn {
+                color: white;
+                background-color: $azul-botao;
+                padding: .9em 0;
+                border-radius: 10px;
             }
         }
     }

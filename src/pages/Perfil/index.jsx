@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react'
-import imgPerfil from 'assets/fotosPerfil/fidel.png'
 import styles from './Perfil.module.scss'
-import NavBarLogado from 'componentes/NavBarLogado'
 import '../../styles/globalStyles.scss'
+
+import NavBarLogado from 'componentes/NavBarLogado'
 import InputPerfil from 'componentes/InputPerfil'
 /* import { div } from '@tensorflow/tfjs' */
 /* const db = require('./db.js'); */
 
 import axios from 'axios'
 
+import imgPerfil from 'assets/fotosPerfil/fidel.png'
 import iconeEditar from '../../assets/icones/editar.png'
 import iconeSettings from '../../assets/icones/iconeSettings.png'
 import iconeInfo from '../../assets/icones/info.png'
@@ -57,7 +58,7 @@ const [togglePerfil, setTogglePerfil] = useState(true)
   return (
     <>
       <header>
-        <NavBarLogado shadow perfil/>
+        <NavBarLogado clean/>
       </header>
 
       <main className={styles.main}>

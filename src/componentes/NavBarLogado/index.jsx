@@ -1,33 +1,45 @@
 import React from 'react'
 import styles from './NavLogado.module.scss'
 import Menu from 'componentes/Menu'
-import imgPerfilTeste from 'assets/fotosPerfil/hiroHamada.jpg'
+import imgPerfilTeste from 'assets/fotosPerfil/fidel.png'
 import Logo from 'componentes/Logo'
 import { Link } from 'react-router-dom'
 
-export default function NavBarLogado({ perfil, shadow }) {
+export default function NavBarLogado({ perfil, clean, dark, admin }) {
 
   return (
     <nav className={`
         ${styles.navBar}
-        ${shadow ? styles.shadow : ''}
+        ${clean ? styles.clean : ''}
+        ${dark ? styles.dark : ''}
       `}>
 
-      {perfil
-        ? ''
-        : <Link to="/perfil">
-            <img
-              className={styles.navBar__fotoPerfil}
-              src={imgPerfilTeste}
-              alt="imagem do hiro hamada"
-            />
-          </Link>
-      }
+        {perfil
+          ? ''
+          : <div className={styles.usuario}>
+              <div className={styles.foto}>
+                  <Link to="/perfil">
+                    <img
+                      className={styles.navBar__fotoPerfil}
+                      src={imgPerfilTeste}
+                      alt="imagem do hiro hamada"
+                    />
+                  </Link>
+                </div>
+
+                <div className={styles.usuario__dados}>
+                  <h2 className={styles.usuario__dados_nome}>Fidel Castro</h2>
+                  <h3 className={styles.usuario__dados_status}><strong>&middot;</strong> Online</h3>
+                </div>
+            </div>
+        }
 
 
-      <Logo shadow={shadow} />
+      <Logo clean={clean} admin={admin} />
 
-      <Menu config />
+      <div className={styles.menu}>
+        <Menu blue />
+      </div>
     </nav>
   )
 }

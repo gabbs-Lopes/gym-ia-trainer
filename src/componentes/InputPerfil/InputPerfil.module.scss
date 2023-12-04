@@ -29,5 +29,13 @@
 @media screen and (max-width: 580px) {
     .divInput {
         width: 100%;
+
+        input {
+            font-size: 14px;
+        }
+
+        input::placeholder {
+            font-size: 14px;
+        }
     }
 }

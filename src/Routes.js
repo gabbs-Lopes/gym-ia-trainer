@@ -8,6 +8,7 @@ import Perfil from 'pages/Perfil';
 import ExercicioPage from 'pages/ExercicioPage';
 import PoliticaDePrivacidade from 'pages/PoliticaDePrivacidade';
 import TensorFlowPage from 'pages/TensorFLowPage';
+import Admin from 'pages/Admin';
 /* import TensorFlow from 'pages/TensorFLowPage'; */
 
 function AppRoutes() {
@@ -22,6 +23,7 @@ function AppRoutes() {
         <Route path="/perfil" element={ <Perfil /> }/>
         <Route path='/exercicio' element={<ExercicioPage />}/>
         <Route path='/politicaDePrivacidade' element={<PoliticaDePrivacidade />}/>
+        <Route path='/admin' element={<Admin />}/>
         <Route path='/tensorflow' element={<TensorFlowPage />}/>
 
         <Route path='*' element={ <NotFound />} />
@@ -30,4 +32,4 @@ function AppRoutes() {
   );
 }
 
-export default AppRoutes;
+export default AppRoutes;
