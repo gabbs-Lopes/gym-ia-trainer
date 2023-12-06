@@ -16,7 +16,9 @@ export default function AbrirMenu({ mudaEstadoMenu, config, blue }) {
         : blue ? <Hamburguer
             className={styles.menuHamburguer}
           />
-        : <h2>monkey</h2>
+        : <Hamburguer
+        className={styles.menuHamburguer}
+      />
       }
     </div>
   )

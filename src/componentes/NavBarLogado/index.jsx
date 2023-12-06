@@ -14,25 +14,28 @@ export default function NavBarLogado({ perfil, clean, dark, admin }) {
         ${dark ? styles.dark : ''}
       `}>
 
-        {perfil
-          ? ''
-          : <div className={styles.usuario}>
-              <div className={styles.foto}>
-                  <Link to="/perfil">
-                    <img
-                      className={styles.navBar__fotoPerfil}
-                      src={imgPerfilTeste}
-                      alt="imagem do hiro hamada"
-                    />
-                  </Link>
-                </div>
+      {perfil
+        ? <div className={styles.usuario}>
+          <div className={styles.foto}>
+            <Link to="/perfil">
+              <img
+                className={styles.navBar__fotoPerfil}
+                src={imgPerfilTeste}
+                alt="imagem do hiro hamada"
+              />
+            </Link>
+          </div>
 
-                <div className={styles.usuario__dados}>
-                  <h2 className={styles.usuario__dados_nome}>Fidel Castro</h2>
-                  <h3 className={styles.usuario__dados_status}><strong>&middot;</strong> Online</h3>
-                </div>
+          {admin
+            ? <div className={styles.usuario__dados}>
+              <h2 className={styles.usuario__dados_nome}>Fidel Castro</h2>
+              <h3 className={styles.usuario__dados_status}><strong>&middot;</strong> Online</h3>
             </div>
-        }
+            : ''
+          }
+        </div>
+        : ''
+      }
 
 
       <Logo clean={clean} admin={admin} />

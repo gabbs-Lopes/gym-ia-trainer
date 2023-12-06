@@ -1,20 +1,23 @@
+const { json } = require('body-parser');
 const db = require('../db.js');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
+
 module.exports ={
     buscarUsuarios: ()=>{
         return new Promise((aceito, rejeitado)=>{
-            db.query('SELECT *FROM usuario', (error, results)=>{
+            db.query('SELECT * FROM usuario', (error, results)=>{
                 if(error) { rejeitado(error); return; }
                 aceito(results);
             });
         });
     },
 
-    buscarUm: (email) =>{
+    //SELECT ID_USUARIO FROM USUARIO WHERE EMAIL_USUARIO;
+    buscarUm: (id) =>{
         return new Promise((aceito, rejeitado)=>{
 
-            db.query('SELECT *FROM usuario WHERE email = ?', [email], (error, results)=>{
+            db.query('SELECT * FROM usuario WHERE id = ?', [id], (error, results)=>{
                 if(error) { rejeitado(error); return; }
                 if(results.length > 0){
                     aceito(results[0]);
@@ -28,18 +31,41 @@ module.exports ={
     inserir: (nome_entrada, email_entrada, senha_entrada, tel_entrada, data_entrada) =>{
         return new Promise((aceito, rejeitado)=>{
 
-            bcrypt.hash(senha_entrada, saltRounds, (err, hash) =>{
-                
-                db.query('INSERT INTO usuario (nome, email, senha, telefone_celular, data_nascim) VALUES (?, ?, ?, ?, ?)', [nome_entrada, email_entrada, hash, tel_entrada, data_entrada], (error, results)=>{
-                    if(error) { rejeitado(error); return; }
-                    aceito(results.insertEmail);
-                    }
-                );
-                                
+            db.query('SELECT * FROM usuario', (error, result, res)=>{
+                if(error) {rejeitado(error); return; }
+                aceito(result);
+                let dados = result;
+
+                const emailExiste = dados.some((e) => e.email === email_entrada);
+                const telefoneExiste = dados.some((e) => e.telefone_celular === tel_entrada);
+
+                if (emailExiste) {
+                    const resposta = { erro: 'Email já existe na base de dados' };
+                    rejeitado(resposta);
+
+                    console.log(resposta)
+                } else if (telefoneExiste) {
+                    const resposta = { erro: 'Telefone já cadastrado na base de dados' };
+                    rejeitado(resposta);
+                    
+                    console.log(resposta)
+                } else {
+                    
+                    bcrypt.hash(senha_entrada, saltRounds, (err, hash) => {
+                        db.query('INSERT INTO usuario (nome, email, senha, telefone_celular, data_nascim) VALUES (?, ?, ?, ?, ?)', [nome_entrada, email_entrada, hash, tel_entrada, data_entrada], (error, results) => {
+                            if (error) {
+                                rejeitado(error);
+                                return;
+                            }
+                            aceito(results.insertEmail);
+                        });
+                    });
+                }
+        
+                });
+
             })
    
-        });
-    
     },
 
     alterar: (id, nome_entrada, email_entrada, senha_entrada, tel_entrada) =>{
@@ -57,9 +83,20 @@ module.exports ={
    
         });
     
-    }
-};
+    },
+    
+    excluir: (id)=>{
 
+        return new Promise((aceito, rejeitado)=>{
+
+            db.query('DELETE FROM usuario WHERE id = ?', [id], (error, results)=>{
+                if(error) { rejeitado(error); return; }
+                aceito(results);
+            });
+        });
+    },
+
+};
 
 
 

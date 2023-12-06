@@ -47,20 +47,21 @@ export default function Cadastro() {
         'content-Type': 'application/json; charset=utf-8'
       }
     }
-
-    await axios.post('http://localhost:3001/api/usuario_unit', {
+    const dadosUsuario = {
       nome: nome,
       email: email,
       senha: senha,
       tel: tel,
-      data: data,
-      
-    }, headers)
+      data: data
+    };
+
+    axios.post('http://localhost:3001/api/usuario_unit', dadosUsuario)
       .then((response) => {
-        console.log(response)
-      }).catch((err) => {
-        console.log(err.response)
+        console.log('Resposta do servidor:', response.data);
       })
+      .catch((error) => {
+        console.error('Erro ao fazer a requisição:', error);
+      });
   }
 
   return (

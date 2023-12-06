@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-/* import { useNavigate } from "react-router-dom" */
+import React, { useState } from 'react'
+import { useNavigate } from "react-router-dom"
 import styles from './Login.module.scss'
 
 import Input from 'componentes/Input'
@@ -12,9 +12,6 @@ import muck from 'assets/iconeMuck2.png'
 import LinkDefault from 'componentes/LinkDefault'
 
 export default function Login() {
-
-
-  /* const [statusUser, setStatusUser] = useState('') */
 
   // Para Fidel Castro Mendes
   const [emailLogin, setEmailLogin] = useState('')
@@ -31,16 +28,8 @@ export default function Login() {
     setSenhaLogin('')
   }
 
-  /* const navigate = useNavigate() */
+  const navigate = useNavigate()
 
-  /* const headers = {
-    'headers': {
-      withCredentials: true
-    }
-  } */
-
-
-  
   const findUser = async () => {
     
     axios.post('http://localhost:3001/api/login', {
@@ -48,34 +37,15 @@ export default function Login() {
       senha: senhaLogin
     })
     .then(res => {
-      console.log("res do index");
-      if(res.data.message) {
-        alert(/* res.data.Message */ "!")
-        console.log("if monkey")
+      console.log("Error: " + res.data.Status)
+      if(res.data.Status === "Success") {
+      navigate('/perfil')
       } else {
-        console.log("else macaco")
+      alert('Error')
       }
-      /* console.log(result) */
-      console.log(res)
     })
   }
   
-  
-  useEffect(() => {
-    axios.defaults.withCredentials = true; 
-    axios.get("http://localhost:3001/api/loggedin")
-    .then((res) => {
-      if (res.data.loggedIn === true) {
-        console.log(res.data.loggedIn)
-        console.log(res.data.user)
-        console.log("requisição get funcionou") 
-      } else { 
-        console.log(res.data.loggedIn)
-        console.log("requisição get fail") 
-      }
-    })
-  }, [])
-
   return (
     <section className={styles.login}>
       <header className={styles.login__menu}>

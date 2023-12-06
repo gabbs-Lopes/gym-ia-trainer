@@ -5,15 +5,16 @@ import iconeUsuarios from '../../../assets/icones/usuarios2.png'
 import iconeTreinos from '../../../assets/icones/nuvemVerde.png'
 
 
-export default function Painel() {
+export default function Painel({alterarEstado, contagemUsuario}) {
+
   return (
     <div className={styles.main}>
         <h2>Geral | Painel</h2>
 
         <div className={styles.cards}>
-            <div className={styles.cards__card}>
+            <div className={styles.cards__card} onClick={() => alterarEstado("Usuarios")}>
                 <img src={iconeUsuarios} alt="icone com 3 representações de pessoas" />
-                <h2>287</h2>
+                <h2>{contagemUsuario}</h2>
                 <h3>Usuários</h3>
             </div>
 

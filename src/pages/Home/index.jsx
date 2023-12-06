@@ -1,6 +1,8 @@
+import React, { useState, useEffect } from 'react'
 import Banner from 'componentes/Banner'
-import React from 'react'
 import styles from './Home.module.scss'
+import axios from 'axios'
+import { useNavigate } from "react-router-dom"
 
 import Rodape from 'componentes/Rodape'
 
@@ -10,6 +12,33 @@ import Carroussel from 'componentes/Carroussel'
 
 
 export default function Home() {
+
+  const [auth, setAuth] = useState('')
+  const [message, setMessage] = useState('')
+  const [name, setId] = useState('')
+
+  const navigate = useNavigate()
+
+  axios.defaults.withCredentials = true;
+
+  useEffect(() => {
+    axios.get('http://localhost:3001/api/verify')
+    .then(res =>{
+      if (res.data.Status === "Success"){
+        setAuth(true)
+        setId(res.data.id)
+        navigate('/')
+      } else {
+        setAuth(false)
+        setMessage(res.data.Error)
+      }
+    })
+    /* .then(err => console.log(err)) */
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  console.log(auth)
+
   return (
     <>
       <Banner styles={styles.Banner} />

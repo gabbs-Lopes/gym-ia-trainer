@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useNavigate } from "react-router-dom"
 import styles from './Perfil.module.scss'
 import '../../styles/globalStyles.scss'
 
@@ -17,54 +18,78 @@ import PerfilToggle from 'componentes/PerfilToggle'
 
 export default function Perfil() {
 
-  // aqui, dps eu me viro pra passar pro elemento
+  const navigate = useNavigate()
 
   axios.defaults.withCredentials = true;
 
-  useEffect(()=>{
-    axios.get('http://localhost:3001/api/loggedin')
+  const [values, setValues] = useState({
+    email: '',
+    nome: '',
+    senha: '',
+    data_nascim: '',
+    telefone_celular: '',
+    id: '',
+  })
+
+  const alterarDados = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value })
+  }
+
+  const updateUsuario = async (e) => {
+    e.preventDefault()
+
+    try {
+      await axios.put('http://localhost:3001/api/usuario_unit/' + values.id, values);
+      console.log("Usuário atualizado com sucesso!");
+      setValues({ ...values }); // Atualiza os dados do usuário com os novos valores
+    } catch (error) {
+      console.error("Erro ao atualizar usuário:", error);
+    }
+  }
+
+  // aqui, dps eu me viro pra passar pro element
+
+  useEffect(() => {
+    axios.get('http://localhost:3001/api/verify')
       .then((res) => {
-        if (res.data.LoggedIn === true) {
-          console.log(res.data)
-          console.log("abacate", res.data.user)
+        if (res.data.id && res.data.Status === "Success") {
+          const id = res.data.id;
+          axios.get('http://localhost:3001/api/usuario_unit/' + id)
+            .then((res) => {
+              setValues({
+                ...values,
+                email: res.data.result.email,
+                nome: res.data.result.nome,
+                senha: res.data.result.senha,
+                data_nascim: res.data.result.data_nascim,
+                telefone_celular: res.data.result.telefone_celular,
+                id: res.data.result.id
+
+              })
+
+            })
         } else {
-          console.log("nao foi")
-          console.log(res.data)
+          navigate('/naoTenteSeuOtario');
+          console.log("valor do id: " + res.data.id);
         }
       })
-      .catch(err => console.log(err))
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  /*   useEffect(() => {
-    axios.get("http://localhost:3001/api/loggedin")
-    .then((res) => {
-      if (res.data.loggedIn === true) {
-        console.log(res.data.loggedIn)
-        console.log(res.data.user)
-        console.log("requisição get funcionou") 
-      } else { 
-        console.log(res.data.loggedIn)
-        console.log("requisição get fail") 
-      }
-    })
-  }, []) */
-  
-  
+  const [togglePerfil, setTogglePerfil] = useState(true)
 
-
-const [togglePerfil, setTogglePerfil] = useState(true)
-  
   console.log(togglePerfil)
   return (
     <>
       <header>
-        <NavBarLogado clean/>
+        <NavBarLogado perfil clean />
       </header>
 
       <main className={styles.main}>
         <section className={styles.left}>
           <div className={styles.left__perfilToggle}>
-            <PerfilToggle 
+            <PerfilToggle
               titulo="Infomações Perfil"
               subtitulo="Details about your personal information"
               img={iconeInfo}
@@ -72,8 +97,8 @@ const [togglePerfil, setTogglePerfil] = useState(true)
               estadoToggle={togglePerfil}
               mudaEstado={() => setTogglePerfil(true)}
             />
-            
-            <PerfilToggle 
+
+            <PerfilToggle
               titulo="Configurações"
               subtitulo="customize and manage your account"
               img={iconeSettings}
@@ -85,21 +110,21 @@ const [togglePerfil, setTogglePerfil] = useState(true)
         </section>
 
         <section className={styles.right}>
-          {togglePerfil          
-          ? <div className={styles.info}>
+          {togglePerfil
+            ? <div className={styles.info}>
               <h1 className={styles.info__titulo}>Account Info</h1>
               <div className={styles.info__dadosPrincipais}>
                 <div className={styles.info__dadosPrincipais_div}>
                   <div className={styles.info__dadosPrincipais_divImg}>
                     <img className={styles.info__dadosPrincipais_divImg__img} src={imgPerfil} alt="fidel castro" />
-                    <img 
-                      className={styles.info__dadosPrincipais_divImg__icone} 
-                      src={iconeEditar} 
-                      alt="icone editar foto" 
+                    <img
+                      className={styles.info__dadosPrincipais_divImg__icone}
+                      src={iconeEditar}
+                      alt="icone editar foto"
                     />
                   </div>
                   <div className={styles.info__dadosPrincipais_divNome}>
-                    <h2>Fidel Castro Mendes</h2>
+                    <h2>{values.nome}</h2>
                     <p>profile-pic.jpg</p>
                   </div>
                 </div>
@@ -108,49 +133,58 @@ const [togglePerfil, setTogglePerfil] = useState(true)
 
               <div className={styles.info__editarDados}>
                 <h2>Alterar dados Pessoais</h2>
-                <form action="">
+                <form onSubmit={updateUsuario} action="">
                   <div className={styles.info__editarDados_divInputs}>
-                    <InputPerfil 
-                      editarDados
-                      type="text" 
-                      label="Full Name" 
-                      conexao="name" 
-                      placeholder="Digite seu Nome Completo"
-                      required
-                    />
 
-                    <InputPerfil 
-                      editarDados
-                      type="email" 
-                      label="Email Address" 
-                      conexao="email" 
-                      placeholder="Digite seu E-mail"
-                      required
-                    />
+                    <InputPerfil
+                  editarDados
+                  type="text"
+                  label="Full Name"
+                  conexao="nome"
+                  placeholder="Full Name"
+                  value={values.nome}
+                  alterarDados={alterarDados}
+                  obrigatorio
+                />
 
-                    <InputPerfil 
-                      editarDados
-                      type="password" 
-                      label="Password" 
-                      conexao="password" 
-                      placeholder="Digite sua Senha"
-                      required
-                    />
+                <InputPerfil
+                  editarDados
+                  type="email"
+                  label="Email Address"
+                  conexao="email"
+                  placeholder="Email Address"
+                  value={values.email}
+                  alterarDados={alterarDados}
+                  obrigatorio
+                />
 
-                    <InputPerfil 
-                      editarDados
-                      type="tel" 
-                      label="Phone Number" 
-                      conexao="tel" 
-                      placeholder="(xx) xxxxx-xxxx"
-                    />
+                <InputPerfil
+                  editarDados
+                  type="password"
+                  label="Password"
+                  conexao="senha"
+                  placeholder="*******"
+                  value={"*******"}
+                  alterarDados={alterarDados}
+                  obrigatorio
+                />
+
+                <InputPerfil
+                  editarDados
+                  type="tel"
+                  label="Phone Number"
+                  conexao="telefone_celular"
+                  placeholder="Phone Number"
+                  value={values.telefone_celular}
+                  alterarDados={alterarDados}
+                />
 
                   </div>
                   <button className={styles.info__editarDados_btn}>Update</button>
                 </form>
               </div>
             </div>
-          : <div className={styles.settings}>
+            : <div className={styles.settings}>
               <h1 className={styles.info__titulo}>Account Settings</h1>
             </div>
           }

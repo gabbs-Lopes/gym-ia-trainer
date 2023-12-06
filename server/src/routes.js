@@ -3,89 +3,80 @@ const router = express.Router();
 const db = require('./db.js');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
-const cors = require('cors');
 const bodyParser = require('body-parser');
-const session = require('express-session');
 const bcrypt = require('bcrypt');
-const flash = require('connect-flash');
 
 const userController = require('./controllers/userController');
 
 router.use(express.json())
 router.use(cookieParser())
-router.use(cors(
-    {
-        origin: ["http://localhost:3000"],
-        methods: ["POST, GET"],
-        credentials: true
-    }
-))
-
 router.use(bodyParser.urlencoded({ extended: true }));
 
-router.use(session({
-    key: "userId",
-    secret: "user", //subscribe
-    resave: true, //false
-    saveUninitialized: true //,false
-    ,cookie: {
-        expires: 60 * 60 * 24, 
-    },
-})
-);
 
-router.post('/login', (req, res) => {
-    const email = req.body.email;
-    const senha = req.body.senha;
-
-
-    db.query(
-        "SELECT * FROM usuario WHERE email = ?",
-        email,
-        (err, result) => {
-            if (err) {
-                res.send({ err: err });
-            }
-
-            if (result.length > 0) {
-                
-                 bcrypt.compare(senha, result[0].senha, (error, response) => {
-                    if (response) {
-                        req.session.user = result; 
-                        res.send(result);
-                        console.log(result);
-                    } else {
-                        res.send({ message: "Email ou senha incorretos!" });
-                    }
-                }); 
-            } else {
-                res.send({ message: "Usuario nao existe" });
-            }
-               
-        },  
+router.use(bodyParser.urlencoded({ extended: true }));
+router.post('/login', (req, res) =>{
+    const sql = 'SELECT *FROM usuario WHERE email = ?';
+     db.query(sql, [req.body.email], (err, data) => {
         
-
-    );// <--- os dados da sessão se perdem aqui.
-            
-});
-
-router.get('/loggedin', (req, res) => {
-    if (req.session.user) {
-        res.send({ loggedIn: true, user: req.session.user })
-    } else {        
-        res.send({ loggedIn: false })
-    }
-    
-})    
-               
-router.get('/perfil', (req,res) =>{
-    return res.json({Status: "Sucesso", id: "id"})
+        if(err) return res.json({Error: "Login error in server"});
+        if(data.length > 0){
+            bcrypt.compare(req.body.senha.toString(), data[0].senha, (err, response) =>{
+                
+                if(err) return res.json({Error: "Password compare error"});
+                if(response){
+                    const id = data[0].id
+                    const token = jwt.sign({id}, "jwt-secret-key", {expiresIn: '1d'});
+                    res.cookie('token', token);
+                    return res.json({Status: "Success", token: token});
+                }else{
+                    return res.json({Error: "Password not matched"});
+                }
+            })
+        }else{
+            return res.json({Error: "No email existed"});
+        }
+    })
 })
+
+const verifyUser = (req, res, next) =>{
+    const token = req.cookies.token;
+    if(!token){
+        return res.json({Error: "You're not authentincated"})
+    }else{
+        jwt.verify(token, "jwt-secret-key", (err, decoded) =>{
+            if(err){
+                return res.json({Error: "Token is not okey"});
+            }else{
+                req.id = decoded.id;
+                console.log(decoded.id)
+                next();
+            }
+        })
+    }
+}
+
+
+router.get('/verify', verifyUser, (req, res) => {
+    return res.json({Status: "Success", id: req.id});
+})
+
+router.get('/logout', (req, res)=>{
+    res.clearCookie('token');
+    return res.json({Status: "Success"});
+})
+
 
 router.get('/usuario', userController.buscarUsuarios);
-router.get('/usuario_unit/:email', userController.buscarUm);
+router.get('/usuario_unit/:id', userController.buscarUm);
 router.post('/usuario_unit', userController.inserir);
 router.put('/usuario_unit/:id', userController.alterar);
+router.delete('/usuario_unit/:id', userController.excluir);
 
 module.exports = router;
+
+
+
+
+
+
 

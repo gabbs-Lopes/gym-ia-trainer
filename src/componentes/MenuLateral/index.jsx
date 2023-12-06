@@ -2,6 +2,8 @@ import React from 'react'
 import styles from './MenuLateral.module.scss'
 import { Link } from 'react-router-dom'
 import { Link as LinkSmooth } from 'react-scroll';
+import axios from 'axios'
+import { useNavigate } from "react-router-dom"
 
 import LinksMenu from 'componentes/Menu/LinksMenu'
 import Logo from 'componentes/Logo'
@@ -11,6 +13,16 @@ import iconeDuvidas from 'assets/iconeDuvidas.png'
 import iconeCasa from 'assets/icones/iconeCasa.png'
 
 export default function MenuLateral({ mudaEstadoMenu, estado }) {
+
+  const navigate = useNavigate()
+
+  const logout = () => {
+    axios.get('http://localhost:3001/api/logout/')
+    .then( () => {
+      navigate('/');
+    }).catch(err => console.log(err))
+  }
+
   return (
     <section id='btn' /* onBlur={mudaEstadoMenu} */ className={`
         ${styles.menuLateral}
@@ -18,7 +30,7 @@ export default function MenuLateral({ mudaEstadoMenu, estado }) {
       `}>
       <div className={styles.menuLateral__div}>
         <Link to="/">
-          <Logo preto />
+          <Logo shadow />
         </Link>
 
         <img
@@ -61,7 +73,7 @@ export default function MenuLateral({ mudaEstadoMenu, estado }) {
             <LinksMenu icone={iconeCasa} texto="Entrar" />
           </Link>
 
-          <button>Logout</button>
+          <button onClick={logout}>Logout</button>
         </div>
       </div>
 
