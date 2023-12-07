@@ -14,8 +14,8 @@ import Carroussel from 'componentes/Carroussel'
 export default function Home() {
 
   const [auth, setAuth] = useState('')
-  const [message, setMessage] = useState('')
-  const [name, setId] = useState('')
+  /* const [message, setMessage] = useState('')
+  const [name, setId] = useState('') */
 
   const navigate = useNavigate()
 
@@ -26,11 +26,11 @@ export default function Home() {
     .then(res =>{
       if (res.data.Status === "Success"){
         setAuth(true)
-        setId(res.data.id)
+        console.log("id: ", res.data.id)
         navigate('/')
       } else {
         setAuth(false)
-        setMessage(res.data.Error)
+        /* setMessage("error: ", res.data.Error) */
       }
     })
     /* .then(err => console.log(err)) */
@@ -41,13 +41,13 @@ export default function Home() {
 
   return (
     <>
-      <Banner styles={styles.Banner} />
+      {auth ? <Banner styles={styles.Banner} /> : <Banner styles={styles.Banner} botao/>}
       <main>
         <section className={styles.porqueNosEscolher}>
           <div className={styles.porqueNosEscolher__div} >
             <img 
             id='sobreNos'
-            src={imgPNE} 
+            src={imgPNE}
             alt="Jovem desportista amarrando cadarço na academia" 
             />
           </div>

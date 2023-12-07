@@ -18,7 +18,7 @@ export default function Painel({alterarEstado, contagemUsuario}) {
                 <h3>Usuários</h3>
             </div>
 
-            <div className={styles.cards__card}>
+            <div className={styles.cards__card} onClick={() => alterarEstado("Treinos")}>
                 <img src={iconeTreinos} alt="icone de nuvem com uma seta para baixo" />
                 <h2>32</h2>
                 <h3>Treinos Salvos</h3>

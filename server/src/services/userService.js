@@ -96,6 +96,17 @@ module.exports ={
         });
     },
 
+    buscarTreinos: () => {
+
+        return new Promise((aceito, rejeitado) => {
+           db.query('SELECT id_treino, nome, FK_id_cat, passo1, passo2, passo3, passo4, nome_arquivo, caminho_arquivo FROM treinos a INNER JOIN categoria b ON b.id_cat = a.FK_id_cat INNER JOIN IMG_treino c ON c.FK_id_TREINO = a.id_treino', 
+            (error, results) => {
+            if(error){rejeitado(error); return; }
+            aceito(results);
+           });
+        })
+    },
+
 };
 
 

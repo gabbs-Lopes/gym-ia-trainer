@@ -15,6 +15,7 @@ import iconeEditar from '../../assets/icones/editar.png'
 import iconeSettings from '../../assets/icones/iconeSettings.png'
 import iconeInfo from '../../assets/icones/info.png'
 import PerfilToggle from 'componentes/PerfilToggle'
+import PopUpPerfil from 'componentes/PopUpPerfil'
 
 export default function Perfil() {
 
@@ -80,6 +81,15 @@ export default function Perfil() {
   const [togglePerfil, setTogglePerfil] = useState(true)
 
   console.log(togglePerfil)
+
+  const [mostrarPopUp, setMostrarPopUp] = useState(false);
+
+  const abrirPopUp = () => {
+    setMostrarPopUp((mostrarPopUp) => !mostrarPopUp);
+
+    console.log("clicado", mostrarPopUp)
+  };
+
   return (
     <>
       <header>
@@ -115,7 +125,10 @@ export default function Perfil() {
               <h1 className={styles.info__titulo}>Account Info</h1>
               <div className={styles.info__dadosPrincipais}>
                 <div className={styles.info__dadosPrincipais_div}>
-                  <div className={styles.info__dadosPrincipais_divImg}>
+                  <div
+                    className={styles.info__dadosPrincipais_divImg}
+                    onClick={abrirPopUp}
+                  >
                     <img className={styles.info__dadosPrincipais_divImg__img} src={imgPerfil} alt="fidel castro" />
                     <img
                       className={styles.info__dadosPrincipais_divImg__icone}
@@ -123,7 +136,12 @@ export default function Perfil() {
                       alt="icone editar foto"
                     />
                   </div>
-                  <div className={styles.info__dadosPrincipais_divNome}>
+
+                  {mostrarPopUp && <PopUpPerfil alterarEstado={abrirPopUp} />}
+
+                  <div
+                    className={styles.info__dadosPrincipais_divNome}
+                  >
                     <h2>{values.nome}</h2>
                     <p>profile-pic.jpg</p>
                   </div>
@@ -137,47 +155,47 @@ export default function Perfil() {
                   <div className={styles.info__editarDados_divInputs}>
 
                     <InputPerfil
-                  editarDados
-                  type="text"
-                  label="Full Name"
-                  conexao="nome"
-                  placeholder="Full Name"
-                  value={values.nome}
-                  alterarDados={alterarDados}
-                  obrigatorio
-                />
+                      editarDados
+                      type="text"
+                      label="Full Name"
+                      conexao="nome"
+                      placeholder="Full Name"
+                      value={values.nome}
+                      alterarDados={alterarDados}
+                      obrigatorio
+                    />
 
-                <InputPerfil
-                  editarDados
-                  type="email"
-                  label="Email Address"
-                  conexao="email"
-                  placeholder="Email Address"
-                  value={values.email}
-                  alterarDados={alterarDados}
-                  obrigatorio
-                />
+                    <InputPerfil
+                      editarDados
+                      type="email"
+                      label="Email Address"
+                      conexao="email"
+                      placeholder="Email Address"
+                      value={values.email}
+                      alterarDados={alterarDados}
+                      obrigatorio
+                    />
 
-                <InputPerfil
-                  editarDados
-                  type="password"
-                  label="Password"
-                  conexao="senha"
-                  placeholder="*******"
-                  value={"*******"}
-                  alterarDados={alterarDados}
-                  obrigatorio
-                />
+                    <InputPerfil
+                      editarDados
+                      type="password"
+                      label="Password"
+                      conexao="senha"
+                      placeholder="*******"
+                      value={"*******"}
+                      alterarDados={alterarDados}
+                      obrigatorio
+                    />
 
-                <InputPerfil
-                  editarDados
-                  type="tel"
-                  label="Phone Number"
-                  conexao="telefone_celular"
-                  placeholder="Phone Number"
-                  value={values.telefone_celular}
-                  alterarDados={alterarDados}
-                />
+                    <InputPerfil
+                      editarDados
+                      type="tel"
+                      label="Phone Number"
+                      conexao="telefone_celular"
+                      placeholder="Phone Number"
+                      value={values.telefone_celular}
+                      alterarDados={alterarDados}
+                    />
 
                   </div>
                   <button className={styles.info__editarDados_btn}>Update</button>

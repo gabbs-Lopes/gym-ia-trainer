@@ -1,10 +1,31 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from './ExerciciosPage.module.scss'
 import NavBarLogado from 'componentes/NavBarLogado'
 import Card from 'componentes/Card'
 import { NavLink } from 'react-router-dom'
 
+import axios from 'axios'
+
 export default function ExerciciosPage() {
+
+  axios.defaults.withCredentials = true;
+
+    useEffect(() => {
+        buscarTreinos();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    const buscarTreinos = () => {
+        axios.get('http://localhost:3001/api/treinos/')
+            .then((response) => {
+                const treinos = {
+                    objeto: response.data.result                  
+                }
+                console.log(treinos);
+            }).catch((err) => {
+                console.log(err.response);
+            });
+    };
   return (
     <>
       <header className={styles.header}>

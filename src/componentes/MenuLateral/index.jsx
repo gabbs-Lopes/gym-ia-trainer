@@ -20,6 +20,7 @@ export default function MenuLateral({ mudaEstadoMenu, estado }) {
     axios.get('http://localhost:3001/api/logout/')
     .then( () => {
       navigate('/');
+      window.location.reload()
     }).catch(err => console.log(err))
   }
 

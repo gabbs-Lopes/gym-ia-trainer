@@ -5,12 +5,16 @@ const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
+const multer  = require('multer');
+const path = require('path');
+
 
 const userController = require('./controllers/userController');
 
 router.use(express.json())
 router.use(cookieParser())
 router.use(bodyParser.urlencoded({ extended: true }));
+router.use(express.static('public'));
 
 
 router.use(bodyParser.urlencoded({ extended: true }));
@@ -65,12 +69,38 @@ router.get('/logout', (req, res)=>{
     return res.json({Status: "Success"});
 })
 
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'public/imagens')
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+    }
+
+})
+const upload = multer({ storage: storage });
+
+// Rota para upload de imagem
+router.post('/upload', upload.single('imagem'), (req, res) => {
+  try {
+    const image = req.file;
+
+    // Aqui, você pode salvar a imagem, processá-la, etc.
+
+    res.status(200).send('Imagem recebida com sucesso!');
+  } catch (error) {
+    console.error('Erro durante o processamento da imagem:', error);
+    res.status(500).send('Erro interno ao processar a imagem.');
+  }
+});
 
 router.get('/usuario', userController.buscarUsuarios);
 router.get('/usuario_unit/:id', userController.buscarUm);
 router.post('/usuario_unit', userController.inserir);
 router.put('/usuario_unit/:id', userController.alterar);
 router.delete('/usuario_unit/:id', userController.excluir);
+router.get('/treinos/', userController.buscarTreinos);
+
 
 module.exports = router;
 

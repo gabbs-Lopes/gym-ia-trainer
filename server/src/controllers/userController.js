@@ -97,6 +97,19 @@ module.exports = {
         }
     },
 
+    buscarTreinos: async (req, res) =>{
+
+        let json = {error:'', result:{}};
+
+        let id = req.params.id;
+        let treinos = await userService.buscarTreinos(id);
+
+        if(treinos){
+            json.result = treinos;
+        }
+        res.json(json);
+    },
+
     Headers() {
         return [
             {

@@ -14,6 +14,7 @@ import iconeAutenticacao from '../../assets/icones/autenticacao.png'
 import iconeConfig from '../../assets/icones/configRoxo.png'
 import Painel from './Painel'
 import Usuarios from './Usuarios'
+import Treino from './Treino'
 
 export default function Admin() {
 
@@ -28,18 +29,17 @@ export default function Admin() {
         const dados = {
           objeto: response.data.result,
         };
-  
+
         console.log("Dados recebidos:", dados);
-  
+
         if (dados.objeto) {
-          // Se 'dados.objeto' existe e é uma lista/array de usuários, atualize a contagem
           setContagem(dados.objeto.length);
         }
-  
+
       }).catch((err) => {
         console.log(err.response);
       });
-  
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -71,7 +71,7 @@ export default function Admin() {
                 <td className={styles.menuAdmin__links_texto}>Usuários</td>
               </tr>
 
-              <tr>
+              <tr onClick={() => setRouteAdmin("Treinos")}>
                 <td className={styles.menuAdmin__links_icone}>
                   <img src={iconeTreinos} alt="icone configurações" />
                 </td>
@@ -104,13 +104,15 @@ export default function Admin() {
 
         <section className={styles.pages}>
           {routeAdmin === "Painel"
-            ? <Painel 
-                alterarEstado={setRouteAdmin} 
-                contagemUsuario={contagem}
-              />
+            ? <Painel
+              alterarEstado={setRouteAdmin}
+              contagemUsuario={contagem}
+            />
             : routeAdmin === "Usuarios"
               ? <Usuarios alterarEstado={setRouteAdmin} />
-              : ''
+              : routeAdmin === "Treinos"
+                ? <Treino />
+                : ''
           }
 
         </section>
