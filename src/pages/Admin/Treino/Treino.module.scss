@@ -1,0 +1,15 @@
+@import '../../../styles/variaveis';
+
+.container {
+    display: flex;
+    flex-direction: column;
+    
+    padding: 2em 3em;
+
+    h2 {
+        font-size: 24px;
+        font-family: $fonte-subtitulo;
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+}

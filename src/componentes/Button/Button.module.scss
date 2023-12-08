@@ -1,0 +1,51 @@
+@import '../../styles/variaveis';
+
+.button {
+    background-color: $azul;
+    color: white;
+
+    font-family: $fonte-principal;
+    font-weight: 500;
+    font-style: italic;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+    border: none;
+    border-radius: 20px;
+
+    padding: .3em 1.5em;
+
+}
+
+.link {
+    color: white;
+    text-decoration: none;
+}
+
+.btnSaibaMais {
+    background-color: $azul-principal;
+    padding: .6em 2em;
+    border-radius: 10px;
+}
+
+.btnFixed {
+    background-color: $ciano;
+    width: 80%;
+    position: fixed;
+    bottom: 5vh;
+    left: 10%;
+}
+
+.btnBanner {
+    background: none;
+    font-family: $fonte-subtitulo;
+    font-style: normal;
+    font-size: 18px;
+    letter-spacing: 2px;
+    border-radius: 0;
+    border: 2px solid $branco;
+    padding: .7em 2em;
+}
+
+
+

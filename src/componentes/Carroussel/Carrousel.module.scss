@@ -1,0 +1,32 @@
+@import '../../styles/variaveis';
+
+.carrouselDestaques {
+    background-color: $preto-fundo;
+    display: flex;
+    justify-content: center;
+
+    &__slide {
+        text-align: center;
+    }
+
+    margin: -1px;
+}
+
+.carrouselExercicio {
+    background-color: none;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+
+    &__slide {
+        text-align: center;
+    }
+}
+
+.img {
+        width: 320px;
+        height: auto;
+        /* border-bottom-right-radius: 20px;
+        border-bottom-left-radius: 20px; */
+    }

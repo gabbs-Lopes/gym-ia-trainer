@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Montserrat:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,500;0,600;1,300;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+
+// tipografia
+$fonte-principal: 'Poppins', sans-serif;
+$fonte-logo: 'Staatliches', cursive;
+$fonte-subtitulo: 'Barlow Condensed', sans-serif;
+$fonte-anton: 'Anton', sans-serif;
+$fonte-rubik: 'Rubik', sans-serif;
+$fonte-subtitulo2: 'Roboto Condensed', sans-serif;
+
+// cores
+$azul-principal: #0482f1;
+$azul-escuro: #001489;
+$branco: #f5f5f5;
+$cinza: #d3d3d3;
+$cinza-texto: #9D9D9D;
+$cinza-escuro: #2b2b2b;
+$cinza-moderno: #1D3856;
+$preto-fundo: #191919;
+$preto-fundo-tranparent: rgba(25, 25, 25, 0.5);
+$azul: #0443f1;
+$ciano: #0FB6F6;
+$azul-botao: #0F26F6;
+$verde: #00FF00;
+
+
+$blur-background: rgba(255, 255, 255, 0.356);
+
+//tamanho de fontes
+
+$px12: 12px;
+$px16: 16px;
+$px18: 18px;
+$px24: 24px;
+
+
+@media screen and (min-width: 1440px) {
+    $px24: 2px;
+}
+

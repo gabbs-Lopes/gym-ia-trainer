@@ -1,0 +1,97 @@
+@import '../../styles/variaveis';
+
+.menuLateral {
+    background-color: $branco;
+    width: 300px;
+    height: 75vh;
+
+    color: black;
+      
+    border-left: 1px solid $azul;
+    border-bottom: 1px solid $azul;    
+    border-bottom-left-radius: 2px;
+
+    transition: all .5s;
+    
+    position: absolute;
+    right: 0;
+    top: -77vh;
+    
+    z-index: 2;
+
+    &__div {
+        margin: 1em 2em;
+    }
+
+
+    &__fechar {
+        width: 20px;
+        position: absolute;
+        right: 15px;
+        top: 15px;
+    }
+
+    &__btn {
+        font-weight: 600;
+        font-size: 14px;
+
+        border: 2px solid $azul;
+        border-radius: 20px;
+
+        padding: .5em 2.8em;
+        margin: 1.8em 0 .5em 0;
+    }
+
+    h3 {
+        font-size: 18px;
+        font-weight: 400;
+        margin: 1.2em 0;
+    }
+
+    &__footer {
+        margin: 1em 2em;
+        display: flex;
+        align-items: center;
+
+        position: absolute;
+        bottom: 0;
+
+        img {
+            width: 50px;
+        }
+
+        h2 {
+            font-size: 12px;
+            margin-left: 20px;
+        }
+    }
+
+    .vs {
+        margin-left: -100px;
+    }
+
+    &__open {
+        transition: all .5s;
+
+        position: absolute;
+        top: 0;
+    }
+
+    &__divLinks {
+        margin: 1em 0;
+
+        a {
+            color: black;
+            text-decoration: none;
+        }
+    }
+
+    &__LinkDiv {
+        display: flex;
+        align-items: flex-end;
+        
+        img {
+            margin-right: 8px;
+        }
+    }
+}

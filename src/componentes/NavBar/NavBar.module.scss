@@ -1,0 +1,21 @@
+@import '../../styles/variaveis';
+
+.menu {
+    background-color: $preto-fundo-tranparent;
+    height: 9vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    &__logo {
+        height: 20px;
+    }
+}
+
+
+.menuhamburguer {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}

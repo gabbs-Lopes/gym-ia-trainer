@@ -1,0 +1,41 @@
+@import '../../styles/variaveis';
+
+.divInput {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+
+    label {
+        font-family: $fonte-principal;
+        font-size: 12px;
+        font-weight: 300;
+        margin-bottom: .4em;
+    }
+
+    input {
+        font-family: $fonte-principal;
+        font-size: 17px;
+        padding: 1em;
+        border: 1px solid $azul;
+        border-radius: 5px;
+    }
+
+    input::placeholder {
+        font-family: $fonte-principal;
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 580px) {
+    .divInput {
+        width: 100%;
+
+        input {
+            font-size: 14px;
+        }
+
+        input::placeholder {
+            font-size: 14px;
+        }
+    }
+}

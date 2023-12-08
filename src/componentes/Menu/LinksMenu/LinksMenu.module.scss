@@ -1,0 +1,12 @@
+.linha {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+
+    margin: .8em 0;
+
+    td {
+        color: black;
+        font-size: 18px;
+    }
+}
