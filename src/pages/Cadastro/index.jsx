@@ -4,6 +4,7 @@ import Input from 'componentes/Input'
 import BotaoSubmit from 'componentes/BotaoSubmit'
 import LinkDefault from 'componentes/LinkDefault'
 import halter from 'assets/iconeHalter2.png'
+import InputMask from 'react-input-mask';
 
 import axios from 'axios'
 import Menu from 'componentes/Menu'

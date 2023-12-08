@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import MenuLateral from 'componentes/MenuLateral'
 import AbrirMenu from './AbrirMenu'
 
-export default function Menu({ config, blue }) {
+export default function Menu({ config, blue, preto }) {
 
     const [menu, setMenu] = useState(false)
 
@@ -12,7 +12,7 @@ export default function Menu({ config, blue }) {
 
     return (
         <div>
-            <AbrirMenu config={config} blue={blue} mudaEstadoMenu={mudaEstadoMenu} />
+            <AbrirMenu config={config} blue={blue} preto={preto} mudaEstadoMenu={mudaEstadoMenu} />
             <MenuLateral mudaEstadoMenu={mudaEstadoMenu} estado={menu} />
         </div>
     )

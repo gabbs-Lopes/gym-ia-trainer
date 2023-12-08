@@ -1,25 +1,76 @@
 @import '../../styles/variaveis';
 @import '../../styles/globalStyles.scss';
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .main {
+    max-width: 100%;
     background-color: $branco;
     font-family: $fonte-principal;
 
-    padding: 2vh;
 
-    &__titulo {
-        font-size: 18px;
-        font-weight: 700;
-        letter-spacing: 1px;
+    display: flex;
+    margin-top: 10vh;
+
+    .left {
+        height: 90vh;
+        background-color: $branco;
+        width: 18%;
+
+        position: fixed;
+        top: 10vh;
+
+        padding: 0 2em;
+
+        &__titulo {
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        &__filtro {
+
+            &_div {
+                display: flex;
+                align-items: center;
+
+                margin: 1em 0;
+
+                cursor: pointer;
+
+                td {
+                    font-size: 20px;
+                    color: black;
+                    font-family: $fonte-subtitulo2;
+                    letter-spacing: 1px;
+                }
+
+                img {
+                    width: 35px;
+                    margin-right: 10px;
+                }
+            }
+        }
     }
 
-    .cards {
-        width: 100%;
-        max-width: 100vw;
-        height: auto;
+    .right {
+        width: 80%;
+        margin-left: 18%;
 
-        margin-top: 1vh;
-        display: flex;
-        flex-wrap: wrap;
+
+        .cards {
+            width: 100%;
+            max-width: 100vw;
+            height: auto;
+    
+            margin-top: 1vh;
+            display: flex;
+            flex-wrap: wrap;
+        }
     }
+
 }

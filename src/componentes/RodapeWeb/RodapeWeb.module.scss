@@ -1,0 +1,124 @@
+@import '../../styles/variaveis';
+
+.rodapeWeb {
+    width: 100%;
+    background: $preto-fundo;
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding-bottom: 4vh;
+
+    &__logo {
+        padding: 3vh 0 1.5vh 0;
+    }
+
+    &__redesSociais {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 0 1.4em 0;
+
+        h3 {
+            font-size: 18px;
+            font-family: $fonte-subtitulo;
+            margin: 1em 0;
+            font-weight: 300;
+        }
+
+        &_icones {
+            
+            img {
+                width: 32px;
+                margin: 0 10px;
+                cursor: pointer;
+            }
+        }
+    }
+
+    &__info {
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+
+        margin: 1em 0;
+
+        &_links {
+            width: 30%;
+            h2 {
+                font-size: 18px;
+                border-bottom: 2px solid $ciano;
+                font-family: $fonte-principal;
+                text-transform: uppercase;
+                font-weight: 600;
+                letter-spacing: 1px;
+
+                padding-bottom: .3em;
+
+            }
+
+            h4 {
+                font-weight: 200;
+                margin: 1em 0;
+                cursor: pointer;
+            }
+        }
+    }
+
+    &__bottom {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        p {
+            font-size: 14px;
+            font-weight: 300;
+            letter-spacing: 1px;
+
+            margin: .7em 0;
+        }
+
+        h4 {
+            font-size: 16px;
+            font-weight: 300;
+        }
+    }
+}
+
+.linhaHorizontal {
+    background-color: rgba(255, 255, 255, 0.705);
+    width: 80%;
+    height: 1px;
+
+    margin: 20px 0 0 0;
+}
+
+/* @media  screen and (min-width: 1500px) {
+    
+    .rodapeWeb { 
+
+        &__info {
+            width: 75%;
+        }
+    }
+
+    .linhaHorizontal {
+        width: 75%;
+    }
+} */
+
+@media  screen and (max-width: 1200px) {
+    
+    .rodapeWeb { 
+
+        &__info {
+            width: 85%;
+        }
+    }
+
+    .linhaHorizontal {
+        width: 85%;
+    }
+}

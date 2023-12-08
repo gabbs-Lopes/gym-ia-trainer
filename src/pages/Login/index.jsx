@@ -41,7 +41,9 @@ export default function Login() {
       if(res.data.Status === "Success") {
       navigate('/perfil')
       } else {
-      alert('Error')
+      /* alert('Error') */
+      console.log(res.data);
+
       }
     })
   }

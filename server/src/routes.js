@@ -69,14 +69,6 @@ router.get('/logout', (req, res)=>{
     return res.json({Status: "Success"});
 })
 
-router.use(express.static(path.join(__dirname, 'client/build')));
-
-router.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-});
-
-router.use('/public', express.static(path.join(__dirname, 'public')));
-
 router.post("/upload-img", uploadUser.single('imagem'), async(req, res)=>{
 
     if(req.file){

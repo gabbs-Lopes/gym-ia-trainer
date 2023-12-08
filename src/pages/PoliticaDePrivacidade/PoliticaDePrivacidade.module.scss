@@ -1,11 +1,43 @@
 @import '../../styles/variaveis';
 
 .main {
+    background: url(../../assets//imagens/fundos/fundoPP2.jpg);
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    /* color: white; */
+
+    padding-bottom: 5vh;
     
     &__titulo {
-        font-size: 24px;
+        font-family: $fonte-anton;
+        font-size: 48px;
+
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+
+        margin: 2em 0 1em 0;
+    }
+}
+
+.politica {
+    display: flex;
+    justify-content: center;
+
+    &__texto {
+        width: 75%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        P {
+            font-family: $fonte-subtitulo;
+            font-size: 22px;
+            text-align: center;
+            font-weight: 500;
+
+            margin: .4em 0;
+        }
     }
 }

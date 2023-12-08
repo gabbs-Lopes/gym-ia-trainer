@@ -44,6 +44,7 @@ export default function Perfil() {
     try {
       await axios.put('http://localhost:3001/api/usuario_unit/' + values.id, values);
       console.log("Usuário atualizado com sucesso!");
+      alert('Dados atualizados com sucesso!');
       setValues({ ...values });
       pegaOsDadosDoUsuario()
     } catch (error) {
