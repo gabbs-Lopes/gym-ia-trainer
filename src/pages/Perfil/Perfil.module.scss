@@ -156,6 +156,28 @@
     }
 }
 
+.settings {
+    width: 80%;
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    
+    &_div {
+        font-size: 18px;
+        position: absolute;
+        left: 0;
+        top: 20vh;
+
+        display: flex;
+    }
+
+    &__btn {
+        color: red;
+        margin: 0 1em;
+    }
+}
+
 .divInput {
     color: red;
 }
@@ -245,7 +267,7 @@
         width: 100%;
         margin: 2vh 0;
         padding: 0;
-        
+
         display: flex;
         justify-content: flex-end;
 
@@ -263,17 +285,17 @@
 
     .info {
 
-        &__dadosPrincipais{
+        &__dadosPrincipais {
             &_divNome {
                 margin: 1.2em;
-    
+
                 h2 {
                     font-size: 16px;
                     font-weight: 600;
                     letter-spacing: 1px;
                     margin-top: 0em;
                 }
-    
+
                 p {
                     font-size: 13px;
                     margin-top: .3em;
@@ -287,7 +309,7 @@
             &_divImg {
                 width: 79px;
                 height: 79px;
-    
+
                 &__img {
                     width: 80px;
                     height: 80px;
@@ -298,18 +320,18 @@
         &__editarDados {
             background-color: white;
             width: 92%;
-    
+
             border-radius: 5px;
             box-shadow: 5px 5px 3px rgba(80, 80, 80, 0.418);
-    
+
             margin-top: 4vh;
             padding: 1.7em;
-    
+
             h2 {
                 font-size: 22px;
                 letter-spacing: 1px;
             }
-    
+
             &_btn {
                 color: white;
                 background-color: $azul-botao;
@@ -344,11 +366,11 @@
                 }
             }
 
-            &_divNome {    
+            &_divNome {
                 h2 {
                     font-size: 24px;
                 }
-    
+
                 p {
                     font-size: 16px;
                 }

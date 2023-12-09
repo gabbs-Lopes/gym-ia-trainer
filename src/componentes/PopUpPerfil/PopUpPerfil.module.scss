@@ -28,7 +28,7 @@
     z-index: 9999;
     background-color: #fff;
     border: 1px solid #ccc;
-    padding: 20px;
+    padding: 5%;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
@@ -36,7 +36,7 @@
     position: relative;
 
     .div {
-        width: 600px;
+        width: 40vw;
 
         position: relative;
 
@@ -88,48 +88,23 @@
         right: 1em;
         bottom: 1em;
     }
+}
 
-    /*     button {
-      background-color: #f44336;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      margin-top: 10px;
-      cursor: pointer;
-      transition: background-color 0.3s ease-in-out;
-  
-      &:hover {
-        background-color: #d32f2f;
-      }
+
+@media screen and (max-width: 768px) {
+  .popUp {
+
+    .div {
+        width: 70vw;
     }
-  
-    .enviarButton {
-      background-color: $azul;
-      color: $branco;
-      border: none;
-      padding: 10px 20px;
-      margin-top: 10px;
-      cursor: pointer;
-      transition: background-color 0.3s ease-in-out;
-  
-      &:hover {
-        background-color: darken($azul, 10%);
-      }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .popUp {
+
+    .div {
+        width: 90vw;
     }
-  
-    .botaoFechar {
-      background-color: transparent;
-      color: black;
-      border: none;
-      padding: 5px;
-      position: absolute;
-      top: 0px;
-      right: 0px;
-      cursor: pointer;
-      transition: color 0.3s ease-in-out;
-  
-      &:hover {
-        color: #555;
-      }
-    } */
+  }
 }

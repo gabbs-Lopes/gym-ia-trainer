@@ -1,7 +1,7 @@
 import NavBar from 'componentes/NavBar'
 import React from 'react'
 import styles from './PoliticaDePrivacidade.module.scss'
-import RodapeWeb from 'componentes/RodapeWeb'
+import WidthFooter from 'componentes/WidthFooter'
 
 export default function PoliticaDePrivacidade() {
   return (
@@ -101,7 +101,7 @@ export default function PoliticaDePrivacidade() {
         </section>
       </main>
 
-      <RodapeWeb />
+      <WidthFooter />
     </>
   )
 }

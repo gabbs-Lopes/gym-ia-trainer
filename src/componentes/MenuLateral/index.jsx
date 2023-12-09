@@ -17,13 +17,15 @@ export default function MenuLateral({ mudaEstadoMenu, estado }) {
 
   const [auth, setAuth] = useState('')
 
+  const navigate = useNavigate()
+
   useEffect(() => {
     axios.get('http://localhost:3001/api/verify')
       .then(res => {
         if (res.data.Status === "Success") {
           setAuth(true)
           console.log("id: ", res.data.id)
-          navigate('/')
+          /* navigate('/perfil') */
         } else {
           setAuth(false)
           /* setMessage("error: ", res.data.Error) */
@@ -33,7 +35,7 @@ export default function MenuLateral({ mudaEstadoMenu, estado }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const navigate = useNavigate()
+  
 
   const logout = () => {
     axios.get('http://localhost:3001/api/logout/')
@@ -77,7 +79,6 @@ export default function MenuLateral({ mudaEstadoMenu, estado }) {
             offset={100}
             duration={800}
           >
-            <img src={iconeCasa} alt="icone de uma casa" />
             Sobre Nós
           </LinkSmooth>
 
@@ -90,7 +91,7 @@ export default function MenuLateral({ mudaEstadoMenu, estado }) {
           </Link>
 
           {auth ? 
-            <Link className="link" to="/Perfil">
+            <Link className="link" to="/perfil">
               <LinksMenu icone={iconeCasa} texto="Perfil" />
             </Link>
             : <Link className="link" to="/login">
@@ -103,7 +104,7 @@ export default function MenuLateral({ mudaEstadoMenu, estado }) {
 
 
           {auth ?
-            <button onClick={logout} className={styles.menuLateral__divLinks_sair}>
+            <button onClick={() => logout()} className={styles.menuLateral__divLinks_sair}>
               <img src={iconeLogout} alt="icone sair" />
               Sair
             </button>

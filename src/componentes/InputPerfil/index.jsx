@@ -1,9 +1,11 @@
 import React from 'react'
 import styles from './InputPerfil.module.scss'
 
+import InputMask from 'react-input-mask';
+
 export default function InputPerfil({ type, 
   label, conexao, placeholder, editarDados, 
-  alterarDados, obrigatorio, value}) {
+  alterarDados, obrigatorio, value, mask}) {
 
   const handleInputChange = (e) => {
     alterarDados(e);
@@ -15,7 +17,9 @@ export default function InputPerfil({ type,
           {label}
           {obrigatorio ? <strong style={{color: "red"}}>*</strong> : ""}          
         </label>
-        <input 
+
+        <InputMask 
+          mask={mask}
           name={conexao}
           id={conexao}
           type={type} 
@@ -25,7 +29,7 @@ export default function InputPerfil({ type,
 
           onChange={handleInputChange} 
           onBlur={handleInputChange} 
-        />
+        />       
     </div>
   )
 }

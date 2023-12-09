@@ -4,11 +4,14 @@ import styles from './Home.module.scss'
 import axios from 'axios'
 import { useNavigate } from "react-router-dom"
 
-import Rodape from 'componentes/Rodape'
-
 import imgPNE from 'assets/jovemDesportista.png'
 import Button from 'componentes/Button'
 import Carroussel from 'componentes/Carroussel'
+import WidthFooter from 'componentes/WidthFooter'
+
+import imgDestaques1 from 'assets/imgDestaques1.png'
+import imgDestaques2 from 'assets/imgDestaques2.png'
+import imgDestaques3 from 'assets/imgDestaques3.png'
 
 
 export default function Home() {
@@ -39,7 +42,7 @@ export default function Home() {
 
   console.log(auth)
 
-  console.log(window.innerWidth)
+  /* console.log(window.innerWidth) */
 
   return (
     <>
@@ -54,22 +57,24 @@ export default function Home() {
             />
           </div>
           
-          <h2 className={styles.porqueNosEscolher__titulo}>Por Que Nos Escolher?</h2>
-          <h3 className={styles.porqueNosEscolher__subtitulo}>Sobre a GymIA</h3>
+          <div className={styles.right}>
+            <h2 className={styles.porqueNosEscolher__titulo}>Por Que Nos Escolher?</h2>
+            <h3 className={styles.porqueNosEscolher__subtitulo}>Sobre a GymIA</h3>
 
-          <p className={styles.porqueNosEscolher__texto}>A GymIA é uma empresa no ramo de personal trainer com IA e qualidade
-            de vida que tem como objetivo principal facilitar e melhorar a
-            experiência de um praticante de atividade físicas, tanto convencionais,
-            quanto de rendimento, encurtando as barreiras existentes nesse âmbito
-            que impedem o seu desenvolvimento.</p>
-          <p className={styles.porqueNosEscolher__texto}>
-            Imagine ter um parceiro de treino sempre ao seu lado, pronto para 
-            fornecer orientação especializada, motivação inabalável e correções 
-            precisas para aprimorar sua técnica. A GymIA Trainer oferece exatamente 
-            isso e muito mais.</p>
+            <p className={styles.porqueNosEscolher__texto}>A GymIA é uma empresa no ramo de personal trainer com IA e qualidade
+              de vida que tem como objetivo principal facilitar e melhorar a
+              experiência de um praticante de atividade físicas, tanto convencionais,
+              quanto de rendimento, encurtando as barreiras existentes nesse âmbito
+              que impedem o seu desenvolvimento.</p>
+            <p className={styles.porqueNosEscolher__texto}>
+              Imagine ter um parceiro de treino sempre ao seu lado, pronto para 
+              fornecer orientação especializada, motivação inabalável e correções 
+              precisas para aprimorar sua técnica. A GymIA Trainer oferece exatamente 
+              isso e muito mais.</p>
 
-          <div className={styles.botao}>
-            <Button saibaMais texto="Saiba Mais" to="/sobreNos" />
+            <div className={styles.botao}>
+              <Button saibaMais texto="Saiba Mais" to="/sobreNos" />
+            </div>
           </div>
         </section>
 
@@ -79,10 +84,16 @@ export default function Home() {
           <div className={styles.destaques__carrousel}>
             <Carroussel homePage/>
           </div>
+
+          <div className={styles.destaques__web}>
+            <img src={imgDestaques1} alt="img destaque" />
+            <img src={imgDestaques2} alt="img destaque" />
+            <img src={imgDestaques3} alt="img destaque" />
+          </div>
         </section>
       </main>
 
-      <Rodape />
+      <WidthFooter />
     </>
   )
 }

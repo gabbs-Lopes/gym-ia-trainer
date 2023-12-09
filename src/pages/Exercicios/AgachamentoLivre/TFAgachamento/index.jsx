@@ -3,6 +3,9 @@ import '@tensorflow/tfjs';
 import * as tmPose from '@teachablemachine/pose';
 import '@tensorflow/tfjs';
 
+import styles from './TFAgachamento.module.scss'
+import { Link } from 'react-router-dom';
+
 function TFAgachamento() {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
@@ -19,7 +22,7 @@ function TFAgachamento() {
       model = await tmPose.load(modelURL, metadataURL);
       maxPredictions = model.getTotalClasses();
 
-      const size = 200;
+      const size = 400;
       const flip = true;
       webcam = new tmPose.Webcam(size, size, flip);
       await webcam.setup();
@@ -77,11 +80,17 @@ function TFAgachamento() {
   }, []);
 
   return (
-    <div>
-      <div>Teachable Machine Pose Model</div>
-      <button type="button" onClick={() => {}}>Start</button>
-      <div><canvas ref={canvasRef}></canvas></div>
-      <div ref={labelContainerRef}></div>
+    <div className={styles.container}>
+      <div><canvas className={styles.container__canva} ref={canvasRef}></canvas></div>
+      <div className={styles.container_right}>
+        <div className={styles.container__titulo}>Detecção de Pose Agachamento Livre</div>
+        <div className={styles.container_div}>        
+          <div ref={labelContainerRef}></div>
+        </div>
+        <button className={styles.container__btn} type="button" onClick={() => {}}>Começar</button>
+      </div>
+
+      <Link className={styles.container_voltar} to="/exercicios"><h2>&#8592; VOLTAR</h2></Link>
     </div>
   );
 }

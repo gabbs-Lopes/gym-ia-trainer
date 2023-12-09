@@ -76,6 +76,7 @@ export default function Exercicios() {
       });
   };
 
+
   if (treinos && treinos.objeto && treinos.objeto.length > 0) {
     let dados = treinos.objeto;
     console.log(dados);
@@ -92,9 +93,9 @@ export default function Exercicios() {
 
       <main className={styles.main}>
         <section className={styles.left}>
-          <h2 className={styles.left__titulo}>
+          {/* <h2 className={styles.left__titulo}>
             Olá, <code>$nomeDoUsuario</code>!
-          </h2>
+          </h2> */}
 
           <div className={styles.left__router}>
             <Link className={styles.left__router_div} to="/">

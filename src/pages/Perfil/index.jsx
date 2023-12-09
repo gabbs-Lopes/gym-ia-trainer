@@ -54,8 +54,6 @@ export default function Perfil() {
       console.error("Erro ao atualizar usuário:", error);
     }
   }
-
-    //aqui macaco
   
 
   // aqui, dps eu me viro pra passar pro element
@@ -107,14 +105,14 @@ export default function Perfil() {
     console.log("clicado", mostrarPopUp)
   };
 
-  console.log(values.foto)
+  console.log(values.id)
 
   const caminhoDaImagem = values.foto ? `imagens/${values.foto}` : imgPadrao;
 
   return (
     <>
       <header>
-        <NavBarLogado perfil clean />
+        <NavBarLogado preto perfil clean />
       </header>
 
       <main className={styles.main}>
@@ -218,6 +216,7 @@ export default function Perfil() {
                       placeholder="Phone Number"
                       value={values.telefone_celular}
                       alterarDados={alterarDados}
+                      mask="(99) 9 9999-9999"
                     />
 
                   </div>
@@ -227,6 +226,10 @@ export default function Perfil() {
             </div>
             : <div className={styles.settings}>
               <h1 className={styles.info__titulo}>Account Settings</h1>
+              <div className={styles.settings_div}>
+                <h2 className={styles.settings__t}>Gostaria deletar sua conta?</h2>
+                <button className={styles.settings__btn}>DELETAR</button>
+              </div>
             </div>
           }
         </section>

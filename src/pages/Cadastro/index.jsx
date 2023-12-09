@@ -125,6 +125,7 @@ export default function Cadastro() {
 
             <div className={styles.cadastro__formDiv}>
               <Input
+                mask="(99) 9 9999-9999"
                 label="Telefone"
                 type="tel"
                 conexao="telefone"
