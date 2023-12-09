@@ -12,7 +12,7 @@ export default function Menu({ config, blue, preto }) {
 
     return (
         <div>
-            <AbrirMenu config={config} blue={blue} preto={preto} mudaEstadoMenu={mudaEstadoMenu} />
+            <AbrirMenu config={config} blue={blue} preto={preto? preto : ''} mudaEstadoMenu={mudaEstadoMenu} />
             <MenuLateral mudaEstadoMenu={mudaEstadoMenu} estado={menu} />
         </div>
     )

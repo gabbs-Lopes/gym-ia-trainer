@@ -14,7 +14,7 @@
 
 
     display: flex;
-    margin-top: 10vh;
+    margin-top: 12vh;
 
     .left {
         height: 90vh;
@@ -24,7 +24,7 @@
         position: fixed;
         top: 10vh;
 
-        padding: 0 2em;
+        padding: 2vh 1em;
 
         &__titulo {
             font-size: 18px;
@@ -34,23 +34,95 @@
 
         &__filtro {
 
+            display: flex;
+            flex-direction: column;
+
+            &_titulo {
+                margin: .4em 0;
+                font-weight: 600;
+            }
+
             &_div {
+                width: 85%;
                 display: flex;
                 align-items: center;
 
-                margin: 1em 0;
+                border-radius: 10px;
+
+                margin: .3em 0;
+                padding: .3em 0em .3em 1em;
 
                 cursor: pointer;
 
                 td {
-                    font-size: 20px;
+                    font-size: 18px;
                     color: black;
                     font-family: $fonte-subtitulo2;
                     letter-spacing: 1px;
                 }
 
                 img {
-                    width: 35px;
+                    width: 30px;
+                    margin-right: 10px;
+                }
+            }
+
+            &_select {
+                background-color: rgb(212, 212, 212);
+            }
+
+            &_limpar {
+                font-size: 14px;
+                font-weight: 600;
+                text-decoration: underline;
+
+                align-self: center;
+                cursor: pointer;
+            }
+
+        }
+
+        &__router {
+            display: flex;
+            width: 80%;
+
+            margin: 1em .4em;
+
+            &_div {
+                border-radius: 10px;
+                color: #0482F1;
+                width: 80%;
+                background-color: rgb(212, 212, 212);
+                display: flex;
+                align-items: center;
+
+                padding: .3em .8em;
+
+                cursor: pointer;
+
+                img {
+                    width: 25px;
+                    
+                    margin-right: 10px;
+                }
+            }
+        }
+
+        &__arquivo {
+            display: flex;
+            width: 80%;
+
+            margin: 1em .4em;
+
+            cursor: pointer;
+
+            &_div {
+                display: flex;
+                align-items: center;
+
+                img {
+                    width: 28px;
+
                     margin-right: 10px;
                 }
             }
@@ -61,6 +133,14 @@
         width: 80%;
         margin-left: 18%;
 
+        .exercicios {
+            h2 {
+                font-size: 24px;
+                font-family: $fonte-subtitulo;
+                text-transform: uppercase;
+                font-weight: 600;
+            }
+        }
 
         .cards {
             width: 100%;
@@ -74,3 +154,18 @@
     }
 
 }
+
+.linha {
+    background-color: $linha;
+    width: 90%;
+    height: 1px;
+    margin: 10px 0;
+}
+
+    a {
+        text-decoration: none;
+
+        :hover {
+            text-decoration: none;
+        }
+    }

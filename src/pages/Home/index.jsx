@@ -39,6 +39,8 @@ export default function Home() {
 
   console.log(auth)
 
+  console.log(window.innerWidth)
+
   return (
     <>
       {auth ? <Banner styles={styles.Banner} /> : <Banner styles={styles.Banner} botao/>}

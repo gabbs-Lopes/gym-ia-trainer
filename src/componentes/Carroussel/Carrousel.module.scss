@@ -24,9 +24,23 @@
     }
 }
 
+.imgExercicio {
+    width: 100%;
+    height: 100vh;
+}
+
 .img {
         width: 320px;
         height: auto;
         /* border-bottom-right-radius: 20px;
         border-bottom-left-radius: 20px; */
     }
+
+.btnNext {
+    top: 45vh;
+    right: 4vw;
+    position: absolute;
+
+
+    z-index: 3;
+}

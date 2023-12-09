@@ -88,4 +88,14 @@
     top: 0;
 
     z-index: 9999;
+
+    border-bottom: 1px solid $linha;
+}
+
+.exercicio {
+    background: rgba(0, 0, 0, 0.185);
+    position: fixed;
+    top: 0;
+
+    border-bottom: none;
 }

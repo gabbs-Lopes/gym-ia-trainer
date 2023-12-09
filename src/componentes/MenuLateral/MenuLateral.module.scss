@@ -6,17 +6,17 @@
     height: 75vh;
 
     color: black;
-      
+
     border-left: 1px solid $azul;
-    border-bottom: 1px solid $azul;    
+    border-bottom: 1px solid $azul;
     border-bottom-left-radius: 2px;
 
     transition: all .5s;
-    
+
     position: absolute;
     right: 0;
     top: -77vh;
-    
+
     z-index: 2;
 
     &__div {
@@ -84,14 +84,34 @@
             color: black;
             text-decoration: none;
         }
+
+        &_sair {
+            font-family: $fonte-principal;
+            font-weight: 600;
+            display: flex;
+            align-items: flex-end;
+            gap: 8px;
+
+            margin: 1.4em 0;
+            color: black;
+            font-size: 18px;
+
+            img {
+                width: 20px;
+            }
+        }
     }
 
     &__LinkDiv {
         display: flex;
         align-items: flex-end;
-        
+
         img {
             margin-right: 8px;
         }
     }
+}
+
+a {
+    cursor: pointer;
 }

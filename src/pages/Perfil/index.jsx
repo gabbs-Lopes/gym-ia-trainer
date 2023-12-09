@@ -10,12 +10,14 @@ import InputPerfil from 'componentes/InputPerfil'
 
 import axios from 'axios'
 
-import imgPerfil from 'assets/fotosPerfil/fidel.png'
+/* import imgPerfil from '../../../public/imagens/imagem-1702082962697.jpg' */
 import iconeEditar from '../../assets/icones/editar.png'
 import iconeSettings from '../../assets/icones/iconeSettings.png'
 import iconeInfo from '../../assets/icones/info.png'
 import PerfilToggle from 'componentes/PerfilToggle'
 import PopUpPerfil from 'componentes/PopUpPerfil'
+
+import imgPadrao from './imgPadraoPerfil.jpg'
 
 export default function Perfil() {
 
@@ -29,6 +31,7 @@ export default function Perfil() {
     senha: '',
     data_nascim: '',
     telefone_celular: '',
+    foto: '',
     id: '',
   })
 
@@ -52,6 +55,9 @@ export default function Perfil() {
     }
   }
 
+    //aqui macaco
+  
+
   // aqui, dps eu me viro pra passar pro element
 
   useEffect(() => {
@@ -74,6 +80,7 @@ export default function Perfil() {
                 senha: res.data.result.senha,
                 data_nascim: res.data.result.data_nascim,
                 telefone_celular: res.data.result.telefone_celular,
+                foto:res.data.result.foto,
                 id: res.data.result.id
 
               })
@@ -99,6 +106,10 @@ export default function Perfil() {
 
     console.log("clicado", mostrarPopUp)
   };
+
+  console.log(values.foto)
+
+  const caminhoDaImagem = values.foto ? `imagens/${values.foto}` : imgPadrao;
 
   return (
     <>
@@ -139,7 +150,9 @@ export default function Perfil() {
                     className={styles.info__dadosPrincipais_divImg}
                     onClick={abrirPopUp}
                   >
-                    <img className={styles.info__dadosPrincipais_divImg__img} src={imgPerfil} alt="fidel castro" />
+                    <img className={styles.info__dadosPrincipais_divImg__img} 
+                      src={caminhoDaImagem}
+                      alt="imagem perfil" />
                     <img
                       className={styles.info__dadosPrincipais_divImg__icone}
                       src={iconeEditar}
@@ -147,7 +160,7 @@ export default function Perfil() {
                     />
                   </div>
 
-                  {mostrarPopUp && <PopUpPerfil alterarEstado={abrirPopUp} />}
+                  {mostrarPopUp && <PopUpPerfil alterarEstado={abrirPopUp} id={values.id} />}
 
                   <div
                     className={styles.info__dadosPrincipais_divNome}

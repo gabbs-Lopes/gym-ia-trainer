@@ -11,6 +11,8 @@ import iconeAbdomen from '../../assets/icones/abdomen.png'
 import iconeBiceps from '../../assets/icones/biceps.png'
 import iconePernas from '../../assets/icones/perna.png'
 import iconeGluteo from '../../assets/icones/gluteo.png'
+import iconePasta from '../../assets/icones/pasta.png'
+import iconeCasa from '../../assets/icones/casaCiano.png'
 
 //imagens
 
@@ -46,6 +48,7 @@ import imgTerra from 'assets/imagens/exercicios/pernas/LevantamentoTerra/img1.jp
 */
 
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 export default function Exercicios() {
 
@@ -84,7 +87,7 @@ export default function Exercicios() {
   return (
     <>
       <header className={styles.header}>
-        <NavBarLogado hambPreto fixed perfil shadow />
+        <NavBarLogado preto fixed perfil shadow/>
       </header>
 
       <main className={styles.main}>
@@ -93,46 +96,86 @@ export default function Exercicios() {
             Olá, <code>$nomeDoUsuario</code>!
           </h2>
 
+          <div className={styles.left__router}>
+            <Link className={styles.left__router_div} to="/">
+                <img src={iconeCasa} alt="icone Casa" />
+                <h3>Início</h3>
+            </Link>
+          </div>
+
+          <div className={styles.linha}></div>
+
+          <div className={styles.left__arquivo}>
+            <div className={styles.left__arquivo_div}>
+              <img src={iconePasta} alt="icone Pasta" />
+              <h3>Biblioteca</h3>
+            </div>
+          </div>
+
+          <div className={styles.linha}></div>
+
           <div className={styles.left__filtro}>
+            <h2 className={styles.left__filtro_titulo}>Filtre Por Categoria:</h2>
             <table>
               <tbody>
-                <tr className={styles.left__filtro_div}
+                <tr className={`
+                  ${styles.left__filtro_div}
+                  ${filtro === "Tórax"? styles.left__filtro_select : ''}
+                `}
                   onClick={() => setFiltro("Tórax")}
                 >
                   <td><img src={iconeTorax} alt="icone Tórax" /></td>
                   <td>Tórax</td>
                 </tr>
-                <tr className={styles.left__filtro_div}
+                <tr className={`
+                  ${styles.left__filtro_div}
+                  ${filtro === "Ombro"? styles.left__filtro_select : ''}
+                `}
                   onClick={() => setFiltro("Ombro")}
                 >
                   <td><img src={iconeOmbro} alt="icone Ombro" /></td>
                   <td>Ombro</td>
                 </tr>
-                <tr className={styles.left__filtro_div}
+                <tr className={`
+                  ${styles.left__filtro_div}
+                  ${filtro === "Costas"? styles.left__filtro_select : ''}
+                `}
                   onClick={() => setFiltro("Costas")}
                 >
                   <td><img src={iconeCostas} alt="icone costas" /></td>
                   <td>Costas</td>
                 </tr>
-                <tr className={styles.left__filtro_div}
+                <tr className={`
+                  ${styles.left__filtro_div}
+                  ${filtro === "Abdômen"? styles.left__filtro_select : ''}
+                `}
                   onClick={() => setFiltro("Abdômen")}
                 >
                   <td><img src={iconeAbdomen} alt="icone abdomen" /></td>
                   <td>Abdômen</td>
                 </tr>
-                <tr className={styles.left__filtro_div}
+                <tr className={`
+                  ${styles.left__filtro_div}
+                  ${filtro === "Bíceps"? styles.left__filtro_select : ''}
+                `}
                   onClick={() => setFiltro("Bíceps")}
                 >
                   <td><img src={iconeBiceps} alt="icone Bíceps" /></td>
                   <td>Bíceps</td>
                 </tr>
-                <tr className={styles.left__filtro_div}
+                <tr className={`
+                  ${styles.left__filtro_div}
+                  ${filtro === "Pernas"? styles.left__filtro_select : ''}
+                `}
                   onClick={ () => setFiltro("Pernas")}
                 >
                   <td><img src={iconePernas} alt="icone Pernas" /></td>
                   <td>Pernas</td>
                 </tr>
-                <tr className={styles.left__filtro_div}
+                <tr className={`
+                  ${styles.left__filtro_div}
+                  ${filtro === "Glúteo"? styles.left__filtro_select : ''}
+                `}
                   onClick={ () => setFiltro("Glúteo")}
                 >
                   <td><img src={iconeGluteo} alt="icone Gluteo" /></td>
@@ -140,14 +183,18 @@ export default function Exercicios() {
                 </tr>
               </tbody>
             </table>
-            <h3 onClick={() => setFiltro("all")}>LimparFiltro</h3>
+            <h3 className={styles.left__filtro_limpar} 
+              onClick={() => setFiltro("all")}
+            >Limpar Filtro</h3>
           </div>
+
+          {/* <div className={styles.linha}></div> */}
         </section>
 
         <section className={styles.right}>
 
           <div className={styles.exercicios}>
-            <h1>Exercícios</h1>
+            <h2>Exercícios | {filtro}</h2>
           </div>
 
           <section className={styles.cards}>
@@ -157,7 +204,7 @@ export default function Exercicios() {
               categoria="Tórax"
               img={imgSupino}
               nome="Supino"
-              to="/exSupino"
+              to="/exercicios/Supino"
             />
 
             <Card
@@ -165,7 +212,7 @@ export default function Exercicios() {
               categoria="Tórax"
               img={imgSupinoInclinado}
               nome="Supino Inclinado"
-              to="/exSupinoInclinado"
+              to="/exercicios/SupinoInclinado"
             />
 
             <Card
@@ -173,7 +220,7 @@ export default function Exercicios() {
               categoria="Tórax"
               img={imgFlexao}
               nome="Flexão"
-              to="/exFlexao"
+              to="/exercicios/Flexao"
             />
 
             <Card
@@ -181,7 +228,7 @@ export default function Exercicios() {
               categoria="Abdômen"
               img={imgCrunch}
               nome="Crunch"
-              to="/exCrunch"
+              to="/exercicios/Crunch"
             />
 
             <Card
@@ -189,7 +236,7 @@ export default function Exercicios() {
               categoria="Abdômen"
               img={imgPrancha}
               nome="Prancha"
-              to="/exPrancha"
+              to="/exercicios/Prancha"
             />
 
             <Card
@@ -197,7 +244,7 @@ export default function Exercicios() {
               categoria="Bíceps"
               img={imgRosca}
               nome="Rosca alternada"
-              to="/exRosca"
+              to="/exercicios/RoscaAlternada"
             />
 
             <Card
@@ -205,7 +252,7 @@ export default function Exercicios() {
               categoria="Bíceps"
               img={imgRoscaComBarra}
               nome="Rosca Com Barra"
-              to="/exRoscaComBarra"
+              to="/exercicios/RoscaComBarra"
             />
 
             <Card
@@ -213,7 +260,7 @@ export default function Exercicios() {
               categoria="Bíceps"
               img={imgRoscaComHalter}
               nome="Rosca Com Halter"
-              to="/exRoscaComHalter"
+              to="/exercicios/RoscaComHalter"
             />
 
             <Card
@@ -221,7 +268,7 @@ export default function Exercicios() {
               categoria="Costas"
               img={imgBarraFixa}
               nome="Barra Fixa"
-              to="/exBarraFixa"
+              to="/exercicios/BarraFixa"
             />
 
             <Card
@@ -229,7 +276,7 @@ export default function Exercicios() {
               categoria="Costas"
               img={imgRemadaMaquina}
               nome="Remada Máquina"
-              to="/exRemadaMaquina"
+              to="/exercicios/RemadaMaquina"
             />
 
             <Card
@@ -237,7 +284,7 @@ export default function Exercicios() {
               categoria="Glúteo"
               img={imgStiff}
               nome="Stiff"
-              to="/exStiff"
+              to="/exercicios/Stiff"
             />
 
             <Card
@@ -245,7 +292,7 @@ export default function Exercicios() {
               categoria="Glúteo"
               img={imgElevacaoPelvica}
               nome="Elevação Pélvica"
-              to="/exElecavaoPelvica"
+              to="/exercicios/ElecavaoPelvica"
             />
 
             <Card
@@ -253,7 +300,7 @@ export default function Exercicios() {
               categoria="Glúteo"
               img={imgPassada}
               nome="Passada"
-              to="/exPassada"
+              to="/exercicios/Passada"
             />
 
             <Card
@@ -261,7 +308,7 @@ export default function Exercicios() {
               categoria="Ombro"
               img={imgRemadaAlta}
               nome="Remada Alta"
-              to="/exRemadaAlta"
+              to="/exercicios/RemadaAlta"
             />
 
             <Card
@@ -269,7 +316,7 @@ export default function Exercicios() {
               categoria="Ombro"
               img={imgElevacaoLateral}
               nome="Elevação Lateral"
-              to="/exElevacaoLateral"
+              to="/exercicios/ElevacaoLateral"
             />
 
             <Card
@@ -277,7 +324,7 @@ export default function Exercicios() {
               categoria="Ombro"
               img={imgDesenvolvimento}
               nome="Desenvolvimento"
-              to="/exDesenvolvimento"
+              to="/exercicios/Desenvolvimento"
             />
 
             <Card
@@ -285,7 +332,7 @@ export default function Exercicios() {
               categoria="Pernas"
               img={imgAgachamentoLivre}
               nome="Agachamento Livre"
-              to="/exAgachamentoLivre"
+              to="/exercicios/AgachamentoLivre"
             />
 
             <Card
@@ -293,7 +340,7 @@ export default function Exercicios() {
               categoria="Pernas"
               img={imgLegPress}
               nome="Leg Press"
-              to="/exLegPress"
+              to="/exercicios/LegPress"
             />
 
             <Card
@@ -301,7 +348,7 @@ export default function Exercicios() {
               categoria="Pernas"
               img={imgTerra}
               nome="Levantamento Terra"
-              to="/exLevantamentoTerra"
+              to="/exercicios/LevantamentoTerra"
             />
 
           </section>

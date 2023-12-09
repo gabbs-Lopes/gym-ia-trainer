@@ -7,7 +7,6 @@ const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const multer  = require('multer');
 const path = require('path');
-const uploadUser = require('./middlewares/uploadImage');
 
 const userController = require('./controllers/userController');
 
@@ -67,27 +66,54 @@ router.get('/verify', verifyUser, (req, res) => {
 router.get('/logout', (req, res)=>{
     res.clearCookie('token');
     return res.json({Status: "Success"});
+
+    
 })
 
-router.post("/upload-img", uploadUser.single('imagem'), async(req, res)=>{
+    const storage = multer.diskStorage({
+        destination: (req, file, cb) => {
+            cb(null, '../public/imagens')
+        },
+        filename: (req, file, cb) => {
+            cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+        }
 
-    if(req.file){
+    })
 
-        return res.json({
-            erro: false,
-            mensagem: "Upload realizado com sucesso!"
-        });
+    const upload = multer({
+        storage: storage
+    })
 
-    }else{
-        return res.status(400).json({
-            erro: true,
-            mensagem: "Erro: Upload não enviado"
+    router.post('/upload/:id', upload.single('imagem'), (req, res)=>{
+        const id = req.params.id;
+        const sql = 'UPDATE usuario SET foto = ? WHERE id = ?'
+        db.query(sql, [req.file.filename, id], (err, data) => {
+            if(err){
+
+                return res.json({Error: "erro no servidor"});   
+
+            }else{
+
+                return res.json({Status: "Success"});
+
+            } 
+            
         })
-    }
+        console.log(req.file.filename);
+    })
 
-   
-})
+    router.delete('/deletar/:id', (req, res)=>{
+        const id = req.params.id;
+        const sql = 'DELETE FROM usuario WHERE id = ?'
+        db.query(sql, [id], (err, data)=>{
+            if(err){
+                return res.json({Error: "erro no servidor"});
 
+            }else{
+                return res.json({Status: "Success"});
+            }
+        })
+    })
 
 router.get('/usuario', userController.buscarUsuarios);
 router.get('/usuario_unit/:id', userController.buscarUm);

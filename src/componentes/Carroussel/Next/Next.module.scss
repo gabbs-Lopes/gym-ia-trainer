@@ -1,0 +1,12 @@
+
+.btn {
+    img {
+        width: 40px;
+    }
+
+    z-index: 999;
+}
+
+.btn:focus {
+    outline: none;
+}

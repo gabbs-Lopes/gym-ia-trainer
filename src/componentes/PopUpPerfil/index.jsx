@@ -3,29 +3,28 @@ import styles from './PopUpPerfil.module.scss';
 import axios from 'axios';
 
 import fechar from '../../assets/icones/fecharPopUp.png'
-
-const PopUpPerfil = ({ alterarEstado }) => {
+const PopUpPerfil = ({ alterarEstado, id }) => {
     const inputRef = useRef(null);
+    const [img, setImg] = useState({
+        imagem: ''
+    })
 
-    const [img, setImg] = useState('')
+    const handleImageUpload = (event) => {
+        event.preventDefault()
+        /* const selectedImage = inputRef.current.files[0]; */
+        console.log('Imagem selecionada:', img.imagem);
 
-    const handleImageUpload = () => {
-        const selectedImage = inputRef.current.files[0];
-        console.log('Imagem selecionada:', selectedImage);
-
-        setImg(selectedImage)
+       /*  setImg(selectedImage) */
 
         //aqui
-        axios.post('http://localhost:3001/api/upload-img')
+        const formdata = new FormData();
+        formdata.append("imagem", img.imagem); 
+        axios.post('http://localhost:3001/api/upload/'+ id ,formdata)
         .then(res=>{
             console.log(res);
+            console.log('Formulário enviado!');
         })
         
-    };
-
-    const handleSubmit = () => {
-        handleImageUpload(); // Chama a função para lidar com o upload da imagem
-        console.log('Formulário enviado!');
     };
 
     return (
@@ -56,7 +55,8 @@ const PopUpPerfil = ({ alterarEstado }) => {
                     {/* <h2>Carregar Imagem de Perfil</h2> */}
 
                     {/* Referência ao input de arquivo */}
-                    <input name='imagem' type="file" ref={inputRef} style={{ display: 'none' }} />
+                 {/*    <form action="" onSubmit={handleImageUpload}> */}
+                    <input type="file" ref={inputRef} id='imagem' style={{ display: 'none' }} onChange={e => setImg({ ...img, imagem: e.target.files[0]})} />
 
                     {/* Botão para disparar a seleção de arquivo */}    
                     <div className={styles.div2}>
@@ -70,9 +70,10 @@ const PopUpPerfil = ({ alterarEstado }) => {
                     </div>              
 
                     {/* Botão "Enviar" com funcionalidade */}
-                    <button className={styles.enviarButton} onClick={handleSubmit}>
+                    <button className={styles.enviarButton} onClick={handleImageUpload}>
                         Enviar
                     </button>
+                  {/*   </form> */}
                 </div>
             </div>
         </div>

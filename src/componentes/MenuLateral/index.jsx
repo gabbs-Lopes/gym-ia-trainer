@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './MenuLateral.module.scss'
 import { Link } from 'react-router-dom'
 import { Link as LinkSmooth } from 'react-scroll';
@@ -11,17 +11,36 @@ import Logo from 'componentes/Logo'
 import fechar from 'assets/icones/fechar.png'
 import iconeDuvidas from 'assets/iconeDuvidas.png'
 import iconeCasa from 'assets/icones/iconeCasa.png'
+import iconeLogout from 'assets/icones/sair.png'
 
 export default function MenuLateral({ mudaEstadoMenu, estado }) {
+
+  const [auth, setAuth] = useState('')
+
+  useEffect(() => {
+    axios.get('http://localhost:3001/api/verify')
+      .then(res => {
+        if (res.data.Status === "Success") {
+          setAuth(true)
+          console.log("id: ", res.data.id)
+          navigate('/')
+        } else {
+          setAuth(false)
+          /* setMessage("error: ", res.data.Error) */
+        }
+      })
+    /* .then(err => console.log(err)) */
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const navigate = useNavigate()
 
   const logout = () => {
     axios.get('http://localhost:3001/api/logout/')
-    .then( () => {
-      navigate('/');
-      window.location.reload()
-    }).catch(err => console.log(err))
+      .then(() => {
+        navigate('/');
+        window.location.reload()
+      }).catch(err => console.log(err))
   }
 
   return (
@@ -70,11 +89,26 @@ export default function MenuLateral({ mudaEstadoMenu, estado }) {
             <LinksMenu icone={iconeCasa} texto="Seja um farnqueado" />
           </Link>
 
-          <Link className="link" to="/login">
-            <LinksMenu icone={iconeCasa} texto="Entrar" />
-          </Link>
+          {auth ? 
+            <Link className="link" to="/Perfil">
+              <LinksMenu icone={iconeCasa} texto="Perfil" />
+            </Link>
+            : <Link className="link" to="/login">
+              <LinksMenu icone={iconeCasa} texto="Entrar" />
+            </Link>
+          }
 
-          <button onClick={logout}>Logout</button>
+
+
+
+
+          {auth ?
+            <button onClick={logout} className={styles.menuLateral__divLinks_sair}>
+              <img src={iconeLogout} alt="icone sair" />
+              Sair
+            </button>
+            : ''
+          }
         </div>
       </div>
 

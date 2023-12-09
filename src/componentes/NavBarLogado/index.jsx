@@ -5,7 +5,7 @@ import imgPerfilTeste from 'assets/fotosPerfil/fidel.png'
 import Logo from 'componentes/Logo'
 import { Link } from 'react-router-dom'
 
-export default function NavBarLogado({ perfil, clean, dark, admin, fixed, hambPreto }) {
+export default function NavBarLogado({ perfil, clean, dark, admin, fixed, preto, exercicio, brancoCiano }) {
 
   return (
     <nav className={`
@@ -13,6 +13,7 @@ export default function NavBarLogado({ perfil, clean, dark, admin, fixed, hambPr
         ${clean ? styles.clean : ''}
         ${dark ? styles.dark : ''}
         ${fixed ? styles.fixo : ''}
+        ${exercicio ? styles.exercicio : ''}
       `}>
 
       {perfil
@@ -39,10 +40,10 @@ export default function NavBarLogado({ perfil, clean, dark, admin, fixed, hambPr
       }
 
 
-      <Logo clean={clean} admin={admin} />
+      <Logo brancoCiano={brancoCiano} clean={clean} admin={admin} />
 
       <div className={styles.menu}>
-        <Menu blue preto={hambPreto}/>
+        <Menu blue preto={preto}/>
       </div>
     </nav>
   )
