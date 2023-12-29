@@ -1,0 +1,60 @@
+@import '../../../../styles/variaveis';
+
+.container {
+    background-color: $branco;
+    display: flex;
+    justify-content: center;
+
+    padding: 3em;
+
+    &__canva {
+        width: 42vw;
+        
+    }
+
+    &_right {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+    &_div {
+        display: flex;
+
+        margin: 3em 0;
+
+        div {
+            font-size: 32px;
+        }
+    }
+
+    &__titulo {
+        font-family: $fonte-tituloExercicio;
+        font-weight: 600;
+        font-size: 42px;
+        margin: 1em 0;
+
+        text-transform: uppercase;
+    }
+
+    &__btn {
+        font-size: 24px;
+        font-family: $fonte-principal;
+        color: white;
+        background-color: $azul;
+
+        border-radius: 10px;
+        padding: .3em 1em;
+    }
+
+    &_voltar {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+
+        border-bottom: 2px solid black;
+    }
+
+}
